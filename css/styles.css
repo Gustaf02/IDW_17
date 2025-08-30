@@ -1,0 +1,60 @@
+/* Header */
+.main-header {
+    background-color: #003366; 
+    color: #ffffff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    margin-right: auto; 
+    margin-left: 3rem;
+}
+
+.logo a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 2.5rem; 
+    font-weight: 600;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem; 
+}
+
+.main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: #a0c4ff; 
+}
+
+/* Le agrego media queries para que tenga diseño responsivo */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .logo {
+        margin-right: 0; 
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
