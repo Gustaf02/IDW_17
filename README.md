@@ -18,7 +18,6 @@
 | Romero, Andrea Elizabeth|
 | Santana, Micaela        |
 | Valdez, Alvaro Miguel   |
-| ----------------------- |
 
 ## Descripción del Proyecto
 Este repositorio contiene la primera entrega del Trabajo Final Integrador para la materia Introducción al Desarrollo Web. El proyecto consiste en el desarrollo de un sitio web con estructura básica que servirá como base para futuras implementaciones.
