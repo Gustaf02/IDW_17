@@ -19,9 +19,9 @@ body {
 }
 
 p {
-    font-size: 1rem; 
-    font-weight: 400; 
-    line-height: 1.6; 
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
     color: #2F2F2F;
     margin-bottom: 1rem;
 }
@@ -78,7 +78,7 @@ p {
 .tit_index_bienvenida {
     font-size: 2rem;
     font-weight: 500;
-    color: #1b4075; 
+    color: #1b4075;
     margin-bottom: 15px;
 }
 
@@ -129,7 +129,7 @@ p {
     gap: 40px;
     text-align: center;
     padding: 60px 20px;
-    
+
 }
 
 .ref_contact_index {
@@ -137,7 +137,7 @@ p {
     padding: 80px 20px;
     text-align: center;
     border-radius: 24px;
-    border: 2px solid #B1CDE5 ;
+    border: 2px solid #B1CDE5;
     max-width: 960px;
     margin: 0 auto;
 }
@@ -148,9 +148,9 @@ p {
 
 .ref_contact_index span {
     display: block;
-   font-size: 1rem; 
-    font-weight: 400; 
-    line-height: 1.6; 
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
     color: #2F2F2F;
     margin-bottom: 20px;
 }
@@ -177,9 +177,10 @@ p {
     color: #004784;
     border: 2px solid #004784;
 }
+
 .btn.btn-index:hover {
     background-color: #e6eff7;
-    color:#004784;
+    color: #004784;
 }
 
 
@@ -497,7 +498,7 @@ p {
 }
 
 .certification p {
-    margin-top: auto; 
+    margin-top: auto;
     font-size: 1em;
     color: #6c757d;
 }
@@ -534,7 +535,8 @@ p {
     color: #fff;
     padding: 40px 20px;
     font-size: 14px;
-    margin-top: 100px;;
+    margin-top: 100px;
+    ;
 }
 
 .footer_links {
@@ -619,7 +621,8 @@ p {
         padding: 1rem;
     }
 
-    .logo, .main-nav ul {
+    .logo,
+    .main-nav ul {
         margin: 0;
     }
 
