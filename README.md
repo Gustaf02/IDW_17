@@ -87,4 +87,4 @@ IDW_17/
 
 ---
 
-*Última actualización: [fecha de última modificación]*
+*Última actualización: [08/09/2025]*
