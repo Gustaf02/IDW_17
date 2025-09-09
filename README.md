@@ -22,6 +22,11 @@
 ## Descripción del Proyecto
 Este repositorio contiene la primera entrega del Trabajo Final Integrador para la materia Introducción al Desarrollo Web. El proyecto consiste en el desarrollo de un sitio web con estructura básica que servirá como base para futuras implementaciones.
 
+## Nuestra página web
+¡Aquí se puede ver nuestro proyecto en vivo!
+
+[![Ver Proyecto](https://img.shields.io/badge/Ver_Clínica-007bff?style=for-the-badge&logo=heart&logoColor=fff)](https://raw.githack.com/Gustaf02/IDW_17/refs/heads/main/index.html)
+
 ## Estructura del Sitio Web
 El sitio cuenta actualmente con las siguientes páginas:
 
