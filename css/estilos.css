@@ -381,6 +381,13 @@ p {
     left: 0;
 }
 
+.card-img-top {
+  height: 200px;          /* o el alto que quieras fijo */
+  object-fit: cover;      /* recorta la imagen para que llene el espacio */
+  width: 100%;            /* que siempre ocupe el ancho completo */
+}
+
+
 .team-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
