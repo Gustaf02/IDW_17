@@ -451,6 +451,18 @@ p {
     background: #3E9FB2
 }
 
+.btn-custom {
+  background-color: #003366; /* azul Bootstrap */
+  color: white;              /* texto en blanco */
+  border-color: #003366;
+}
+
+.btn-custom:hover {
+  background-color: #0b5ed7; /* tono más oscuro al pasar el mouse */
+  border-color: #0a58ca;
+}
+
+
 /* --- Instalaciones --- */
 .facilities-gallery {
     display: grid;
