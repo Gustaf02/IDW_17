@@ -26,7 +26,11 @@ p {
     margin-bottom: 1rem;
 }
 
-/* --- Header --- */
+/* Navbar */
+.bg-azul-oscuro {
+    background-color: #003366 !important; /* Azul marino oscuro */
+}
+/* --- Header 
 .main-header {
     background-color: #003366;
     color: #ffffff;
@@ -72,7 +76,7 @@ p {
 .main-nav a:hover {
     color: #a0c4ff;
 }
-
+*/
 /* --- Estilos del Index (inicio) --- */
 
 .tit_index_bienvenida {
@@ -538,7 +542,7 @@ p {
     flex-wrap: wrap;
 }
 
-/* --- Footer --- */
+/* --- Footer 
 .main-footer {
     background-color: #0c1327;
     color: #fff;
@@ -619,7 +623,7 @@ p {
     margin-top: 40px;
     padding-top: 20px;
     border-top: 1px solid #555;
-}
+} 
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
@@ -633,7 +637,7 @@ p {
     .logo,
     .main-nav ul {
         margin: 0;
-    }
+    }*/
 
     .history-content {
         flex-direction: column;
