@@ -37,15 +37,16 @@ El sitio cuenta actualmente con las siguientes páginas:
 ### 2. Institucional.html (Información Institucional)
 - Presenta información general sobre la organización
 - Incluye la visión, misión y objetivos
-- Proporciona detalles relevantes sobre la empresa
+- Presenta un catálogo resumido de profesionales
+- Proporciona detalles sobre las instalaciones y certificaciones que la clínica posee
 
 ### 3. Contacto.html (Página de Contacto)
 - Ofrece los principales canales de comunicación
-- Muestra números de contacto y posible formulario
-- Facilita el contacto con clientes y visitantes
+- Incluye un formulario de contacto
+- Facilita la comunicación con clientes y visitantes
 
-### 4. Styles.css (Hoja de Estilos)
-- Centraliza todos los estilos del sitio web
+### 4. Eestilos.css (Hoja de Estilos)
+- Centraliza estilos del sitio web
 - Mantiene la coherencia visual en todas las páginas
 - Facilita el mantenimiento y actualizaciones de diseño
 
@@ -54,6 +55,7 @@ El sitio cuenta actualmente con las siguientes páginas:
 - CSS3
 - Git para control de versiones
 - GitHub para alojamiento del repositorio
+- Bootstrap 5
 
 ## Objetivos Cumplidos
 - [x] Estructurar correctamente el contenido de las páginas web
@@ -62,8 +64,7 @@ El sitio cuenta actualmente con las siguientes páginas:
 - [x] Implementar reglas, atributos y valores CSS apropiados
 - [x] Establecer un estilo coherente para toda la estructura web
 - [x] Implementación de diseños con CSS, RWD y frameworks CSS.
-- [x] Adaptar el sitio web a múltiples tamaños de pantalla mediante técnicas de diseño web responsivo
-(RWD) considerando al menos tres puntos de quiebre.
+- [x] Adaptar el sitio web a múltiples tamaños de pantalla mediante técnicas de diseño web responsivo (RWD) considerando al menos tres puntos de quiebre.
 - [x] Integrar un framework CSS (Bootstrap 5)
 
 ## Estructura de Archivos
@@ -74,7 +75,7 @@ IDW_17/
 │ └── catalogo de profesionales incluidos (temporal)
 ├── contacto.html # Página de contacto
 ├── css/
-│ └── styles.css # Hoja de estilos principal
+│ └── estilos.css # Hoja de estilos principal
 ├── img/ # Directorio para imágenes (futura implementación)
 └── README.md # Este archivo
 
@@ -85,7 +86,7 @@ IDW_17/
 3. Navegar entre las diferentes páginas usando el menú de navegación
 
 ## Próximos Pasos (Para futuras entregas)
-- Optimizar catalogo y agregar formulario de turnos
+- Optimizar catalogo ampliando el listado de profesionales y agregar formulario de turnos
 - Agregar más secciones y contenido según requerimientos
 - Mejorar la interacción con JavaScript
 - Optimizar el rendimiento y accesibilidad
