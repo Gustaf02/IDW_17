@@ -55,6 +55,13 @@ p {
     font-weight: 500;
 }
 
+.contact-section .list-unstyled h5 {
+    color: #1b4075; 
+    margin-top: 0; 
+    margin-bottom: 5px; 
+    
+}
+
 .contact-section ul {
     list-style: none;
     padding: 0;
