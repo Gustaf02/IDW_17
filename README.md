@@ -15,12 +15,11 @@
 | Blanc, Eugenia          |
 | Ilari, Alondra Nazarena |
 | Ortiz, Carlos Gustavo   |
-| Romero, Andrea Elizabeth|
 | Santana, Micaela        |
 | Valdez, Alvaro Miguel   |
 
 ## Descripción del Proyecto
-Este repositorio contiene la primera entrega del Trabajo Final Integrador para la materia Introducción al Desarrollo Web. El proyecto consiste en el desarrollo de un sitio web con estructura básica que servirá como base para futuras implementaciones.
+Este repositorio contiene la segunda entrega del Trabajo Final Integrador para la materia Introducción al Desarrollo Web. El proyecto consiste en el desarrollo de un sitio web con estructura básica que servirá como base para futuras implementaciones.
 
 ## Nuestra página web
 ¡Aquí se puede ver nuestro proyecto en vivo!
@@ -62,12 +61,17 @@ El sitio cuenta actualmente con las siguientes páginas:
 - [x] Conectar documentos HTML con archivos CSS
 - [x] Implementar reglas, atributos y valores CSS apropiados
 - [x] Establecer un estilo coherente para toda la estructura web
+- [x] Implementación de diseños con CSS, RWD y frameworks CSS.
+- [x] Adaptar el sitio web a múltiples tamaños de pantalla mediante técnicas de diseño web responsivo
+(RWD) considerando al menos tres puntos de quiebre.
+- [x] Integrar un framework CSS (Bootstrap 5)
 
 ## Estructura de Archivos
 
 IDW_17/
 ├── index.html # Página principal
 ├── institucional.html # Información institucional
+│ └── catalogo de profesionales incluidos (temporal)
 ├── contacto.html # Página de contacto
 ├── css/
 │ └── styles.css # Hoja de estilos principal
@@ -81,7 +85,7 @@ IDW_17/
 3. Navegar entre las diferentes páginas usando el menú de navegación
 
 ## Próximos Pasos (Para futuras entregas)
-- Implementar diseño responsive para diferentes dispositivos
+- Optimizar catalogo y agregar formulario de turnos
 - Agregar más secciones y contenido según requerimientos
 - Mejorar la interacción con JavaScript
 - Optimizar el rendimiento y accesibilidad
@@ -89,7 +93,8 @@ IDW_17/
 
 ## Estado del Proyecto
 ✅ **Primera entrega completada** - Estructura básica del sitio web
+✅ **Segunda entrega completada** - Diseño responsivo y Bootstrap 5
 
 ---
 
-*Última actualización: [08/09/2025]*
+*Última actualización: [02/10/2025]*
