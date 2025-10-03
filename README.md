@@ -45,7 +45,7 @@ El sitio cuenta actualmente con las siguientes páginas:
 - Incluye un formulario de contacto
 - Facilita la comunicación con clientes y visitantes
 
-### 4. Eestilos.css (Hoja de Estilos)
+### 4. Estilos.css (Hoja de Estilos)
 - Centraliza estilos del sitio web
 - Mantiene la coherencia visual en todas las páginas
 - Facilita el mantenimiento y actualizaciones de diseño
