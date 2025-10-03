@@ -1,6 +1,6 @@
 # IDW_17
 
-# IDW_17 - Trabajo Final Integrador (1ra Entrega)
+# IDW_17 - Trabajo Final Integrador (2da Entrega)
 
 ## Información del Grupo
 - **Materia**: Introducción al Desarrollo Web
