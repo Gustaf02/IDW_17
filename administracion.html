@@ -11,7 +11,6 @@
 </head>
 
 <body class="admin-page">
-    <!-- Menú de navegación -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark admin-header fixed-top shadow">
             <div class="container">
@@ -34,19 +33,18 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="admin-medicos.html">Administración</a>
                         </li>
-                        <!-- QUITÉ el botón "Pedir Turno" que no tiene sentido aquí -->
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- Contenido principal -->
+
     <main class="container my-5 pt-5">
 
         <h1 class="text-primary fw-bold mb-4">Administración de Médicos</h1>
 
-        <!-- FORMULARIO COMPLETO -->
+        <!-- FORMULARIO -->
         <section class="card shadow mb-5 admin-card">
             <div class="card-header bg-primary text-white">
                 <h5 class="mb-0"><i class="fas fa-user-plus me-2"></i>Agregar/Editar Médico</h5>
@@ -56,7 +54,7 @@
                     <input type="hidden" id="medicoId" value="">
 
                     <div class="row">
-                        <!-- Fila 1: Datos básicos -->
+                        <!-- Fila 1: Nombre, Apellido, Matrícula -->
                         <div class="col-md-4 mb-3">
                             <label class="form-label">Nombre *</label>
                             <input type="text" class="form-control" id="nombre" required>
@@ -72,7 +70,7 @@
                             <input type="number" class="form-control" id="matricula" required>
                         </div>
 
-                        <!-- Fila 2: Especialidad SIMPLIFICADA -->
+                        <!-- Fila 2: Especialidad -->
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Especialidad *</label>
                             <input type="text" class="form-control" id="especialidad" required
@@ -110,7 +108,7 @@
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="2" id="obra2">
-                                        <label class="form-check-label" for="obra2">Swiss Medical</label>
+                                        <label class="form-check-label" for="obra2">OSPE</label>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -164,7 +162,7 @@
             </div>
         </section>
 
-        <!-- TABLA COMPLETA -->
+        <!-- TABLA -->
         <section class="card shadow admin-card">
             <div class="card-header bg-info text-white">
                 <h5 class="mb-0"><i class="fas fa-list me-2"></i>Lista de Médicos Registrados</h5>
@@ -197,7 +195,7 @@
         </section>
     </main>
 
-    <!-- PASO 6: Mismo pie de página que tus otras páginas -->
+
     <footer class="bg-dark text-white pt-5 pb-4 mt-5">
         <div class="container">
             <p class="text-center text-md-start text-white small">

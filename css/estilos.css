@@ -273,43 +273,39 @@ p {
 
 /* --- Estilos de Administracion--- */
 
-/* Fondo sutil amarillo muy clarito */
 body.admin-page {
-    background-color: #fffbf0; /* Amarillo casi blanco */
+    background-color: #fffbf0;
 }
 
-/* Header de administración - AZUL con ACENTO AMARILLO */
 .admin-header {
-    background-color: #ffc107 !important; /* AMARILLO del botón */
-    border-bottom: 4px solid #003366; /* Línea azul corporativa */
+    background-color: #ffc107 !important;
+    border-bottom: 4px solid #003366;
 }
 
 .admin-header .navbar-brand,
 .admin-header .nav-link {
-    color: #1a1a1a !important; /* Texto oscuro para leer sobre amarillo */
+    color: #1a1a1a !important; 
 }
 
 .admin-header .nav-link.active {
-    color: #003366 !important; /* Azul para el activo */
+    color: #003366 !important; 
     font-weight: 600;
 }
 
 .admin-card {
-    border-left: 4px solid #003366; /* Borde azul */
+    border-left: 4px solid #003366;
     box-shadow: 0 2px 8px rgba(0, 51, 102, 0.1);
 }
 
 .admin-card .card-header {
-    background-color: #003366 !important; /* Azul corporativo */
-    border-bottom: 2px solid #ffc107; /* Línea amarilla en header */
+    background-color: #003366 !important;
+    border-bottom: 2px solid #ffc107;
 }
 
-/* Tabla de administración - AZUL (te gustan) */
 .admin-table thead {
-    background-color: #003366 !important; /* Azul corporativo */
+    background-color: #003366 !important;
 }
 
-/* Títulos en azul con badge amarillo */
 .admin-page h1.text-primary {
     color: #003366 !important;
     position: relative;
@@ -328,9 +324,6 @@ body.admin-page {
     vertical-align: middle;
 }
 
-/* Botones mantienen sus colores originales */
-
-/* Indicador en el menú activo con azul sobre amarillo */
 .nav-link.active[href*="admin"] {
     background-color: rgba(0, 51, 102, 0.1) !important;
     color: #003366 !important;
