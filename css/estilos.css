@@ -270,3 +270,67 @@ p {
   background-color: #0b5ed7; 
   border-color: #0a58ca;
 }
+
+/* --- Estilos de Administracion--- */
+
+body.admin-page {
+    background-color: #fffbf0;
+}
+
+.admin-header {
+    background-color: #ffc107 !important;
+    border-bottom: 4px solid #003366;
+}
+
+.admin-header .navbar-brand,
+.admin-header .nav-link {
+    color: #1a1a1a !important; 
+}
+
+.admin-header .nav-link.active {
+    color: #003366 !important; 
+    font-weight: 600;
+}
+
+.admin-card {
+    border-left: 4px solid #003366;
+    box-shadow: 0 2px 8px rgba(0, 51, 102, 0.1);
+}
+
+.admin-card .card-header {
+    background-color: #003366 !important;
+    border-bottom: 2px solid #ffc107;
+}
+
+.admin-table thead {
+    background-color: #003366 !important;
+}
+
+.admin-page h1.text-primary {
+    color: #003366 !important;
+    position: relative;
+    display: inline-block;
+}
+
+.admin-page h1.text-primary::after {
+    content: "ADMIN";
+    background: #ffc107;
+    color: #003366;
+    font-size: 0.6em;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 10px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.nav-link.active[href*="admin"] {
+    background-color: rgba(0, 51, 102, 0.1) !important;
+    color: #003366 !important;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.mt-superior {
+  margin-top: 140px; 
+}
