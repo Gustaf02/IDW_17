@@ -330,3 +330,7 @@ body.admin-page {
     border-radius: 6px;
     font-weight: 600;
 }
+
+.mt-superior {
+  margin-top: 140px; 
+}
