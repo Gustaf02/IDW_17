@@ -1,0 +1,32 @@
+/*
+  CSS para la página de Login
+*/
+
+/* body página login */
+.login-body {
+    background-color: #f8f9fa; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    font-family: 'Poppins', sans-serif; 
+}
+
+/* Contenedor principal (main) que centra el formulario */
+.login-main {
+    flex-grow: 1; 
+    padding-top: 80px; 
+    padding-bottom: 50px;
+}
+
+/* Para la tarjeta del formulario de login */
+.login-card {
+    max-width: 450px; 
+    width: 100%; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+}
+
+/* Ajuste del footer */
+.login-body > footer {
+    margin-top: auto;
+}
