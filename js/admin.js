@@ -205,14 +205,12 @@ function mostrarMedicosEnTabla(medicos) {
             <td>${medico.matricula}</td>
             <td>$${medico.valorConsulta.toFixed(2)}</td>
             <td>
-                <button class="btn btn-sm btn-warning btn-editar" data-id="${
-                  medico.id
-                }">
+                <button class="btn btn-sm btn-warning btn-editar" data-id="${medico.id
+      }">
                     <i class="fas fa-edit"></i>
                 </button>
-                <button class="btn btn-sm btn-danger btn-eliminar" data-id="${
-                  medico.id
-                }">
+                <button class="btn btn-sm btn-danger btn-eliminar" data-id="${medico.id
+      }">
                     <i class="fas fa-trash"></i>
                 </button>
             </td>
