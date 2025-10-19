@@ -1,9 +1,3 @@
-// js/catalogoInicial.js
-
-/**
- * Define la variable global que contiene el catálogo inicial de médicos.
- * Esta variable se usará en catalogo.js y medicos.js para inicializar LocalStorage.
- */
 const catalogoInicial = [
   {
     id: 1,
@@ -202,8 +196,6 @@ const catalogoInicial = [
   }
 ];
 
-// Función global para inicializar LocalStorage si no existe.
-
 function inicializarCatalogo() {
   const KEY = "medicos_clinica";
   const almacenados = localStorage.getItem(KEY);
@@ -216,5 +208,4 @@ function inicializarCatalogo() {
   }
 }
 
-// Inicializar inmediatamente al cargar este script
 inicializarCatalogo();

@@ -1,14 +1,9 @@
-// js/medicos.js
-// Lógica de administración (CRUD)
-
 document.addEventListener("DOMContentLoaded", function () {
-    // Protección de Acceso (se mantuvo de la versión de su compañero)
     if (localStorage.getItem("loggedIn") !== "true") {
-        // window.location.href = "login.html"; // Comentado para que la app se ejecute en el Canvas
     }
 
-    const KEY = "medicos_clinica"; // CLAVE CONSISTENTE
-    const PLACEHOLDER_FOTO = "img/default_doctor.png"; // Usamos el mismo placeholder que el catálogo
+    const KEY = "medicos_clinica";
+    const PLACEHOLDER_FOTO = "img/default_doctor.png";
 
     const form = document.getElementById("formMedico");
     const tbody = document.getElementById("tablaMedicos");
@@ -17,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cardHeaderTitle = document.querySelector(".card-header h5");
 
     const campos = {
-        id: document.getElementById("medicoId"), // Este campo ahora guarda el índice del array
+        id: document.getElementById("medicoId"),
         nombre: document.getElementById("nombre"),
         apellido: document.getElementById("apellido"),
         matricula: document.getElementById("matricula"),
@@ -29,8 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
         foto: document.getElementById("foto"),
     };
 
-    // --- Funciones de Persistencia ---
-
     function cargar() {
         const data = localStorage.getItem(KEY);
         let medicos = [];
@@ -40,12 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 medicos = JSON.parse(data); 
             } catch (e) { 
                 console.error("Error al parsear LocalStorage:", e);
-                // Si falla el parseo, se intentará inicializar
             }
         }
         
-        // CORRECCIÓN CLAVE: Inicialización si no hay datos o los datos son inválidos/vacíos
-        // Esto asegura que la primera carga SIEMPRE tenga el catálogo inicial si no hay persistencia válida.
         if (!Array.isArray(medicos) || medicos.length === 0) {
             if (Array.isArray(window.catalogoInicial) && window.catalogoInicial.length > 0) {
                 medicos = window.catalogoInicial.slice();
@@ -58,15 +48,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function guardar(medicos) {
         localStorage.setItem(KEY, JSON.stringify(medicos));
-        // Opcional: Disparar evento de storage manualmente para actualizar otras pestañas (como el catálogo)
         window.dispatchEvent(new StorageEvent('storage', {
             key: KEY,
             newValue: JSON.stringify(medicos),
             oldValue: JSON.stringify(cargar()) 
         }));
     }
-
-    // --- Funciones de UI ---
 
     function limpiarFormulario() {
         form.reset();
@@ -87,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const fotoSrc = m.foto && m.foto.startsWith("data:image") ? m.foto : (m.foto || PLACEHOLDER_FOTO);
 
             const fila = document.createElement("tr");
-            // Se usa data-index para la edición/borrado, consistente con la lógica de su compañero
             fila.innerHTML = `
                 <td>${m.id || 'N/A'}</td> 
                 <td><img src="${fotoSrc}" alt="${m.nombre}" style="width:60px;height:60px;object-fit:cover;border-radius:8px"></td>
@@ -109,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const m = cargar()[i];
         if (!m) return;
 
-        campos.id.value = i; // Guarda el índice del array para saber qué actualizar
+        campos.id.value = i;
         campos.nombre.value = m.nombre;
         campos.apellido.value = m.apellido;
         campos.matricula.value = m.matricula;
@@ -119,7 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
         campos.telefono.value = m.telefono;
         campos.descripcion.value = m.descripcion;
         
-        // Marcar Obras Sociales
         document.querySelectorAll("input[type=checkbox]").forEach(c => {
             const label = c.nextElementSibling.textContent.trim();
             c.checked = m.obraSociales?.includes(label);
@@ -132,7 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function eliminarMedico(i) {
-        // En una aplicación real, se usaría un modal personalizado en lugar de confirm()
         if (confirm("¿Estás seguro de que quieres eliminar este médico?")) {
             const medicos = cargar();
             medicos.splice(i, 1);
@@ -141,14 +125,12 @@ document.addEventListener("DOMContentLoaded", function () {
             limpiarFormulario();
         }
     }
-    
-    // --- Manejo del Formulario ---
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
         
         const medicos = cargar();
-        const idx = campos.id.value; // Índice si estamos editando (string de índice)
+        const idx = campos.id.value;
 
         const obras = Array.from(document.querySelectorAll("input[type=checkbox]:checked")).map(
             (c) => c.nextElementSibling.textContent.trim()
@@ -157,19 +139,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const isEditing = !!idx;
 
         const nuevo = {
-            // Si edita, usa el ID existente; si crea, calcula un nuevo ID único
             id: isEditing ? medicos[idx].id : (Math.max(0, ...medicos.map(m => m.id || 0)) + 1),
             nombre: campos.nombre.value.trim(),
             apellido: campos.apellido.value.trim(),
             matricula: campos.matricula.value.trim(),
             especialidad: campos.especialidad.value.trim(),
-            // Asegura que el valor de consulta se guarde como número
             valorConsulta: parseFloat(campos.valorConsulta.value) || 0,
             email: campos.email.value.trim(),
             telefono: campos.telefono.value.trim(),
             obraSociales: obras,
             descripcion: campos.descripcion.value.trim(),
-            foto: isEditing ? (medicos[idx]?.foto || "") : "" // Mantiene la foto si no se sube una nueva
+            foto: isEditing ? (medicos[idx]?.foto || "") : ""
         };
 
         const archivo = campos.foto.files[0];
@@ -186,15 +166,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function guardarMedico(nuevo, medicos, idx) {
-        if (idx) medicos[idx] = nuevo; // Edición
-        else medicos.push(nuevo); // Creación
+        if (idx) medicos[idx] = nuevo;
+        else medicos.push(nuevo);
 
         guardar(medicos);
         renderTabla();
         limpiarFormulario();
     }
 
-    // --- Manejo de Eventos en Tabla ---
 
     tbody.addEventListener("click", e => {
         const btnEditar = e.target.closest(".editar");
@@ -211,6 +190,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btnCancelar.addEventListener("click", limpiarFormulario);
 
-    // Inicializar la tabla al cargar la página
     renderTabla();
 });
