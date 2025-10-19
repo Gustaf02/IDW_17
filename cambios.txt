@@ -1,0 +1,7 @@
+Modifique catalogo.html para que muestre los datos de catalogoInicial.js
+catalogo.js es el script que se encarga de eso.
+
+y medicos js es el CRUD para añadir, editar y/o eliminar medicos,
+el problema esta en que administracion.html no esta cargando los datos de los 15 medicos que teniamos antes.
+
+chicos necesito ayuda para ver porque no se estan mostrando los datos en pantalla.
