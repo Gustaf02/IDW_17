@@ -56,10 +56,10 @@ p {
 }
 
 .contact-section .list-unstyled h5 {
-    color: #1b4075; 
-    margin-top: 0; 
-    margin-bottom: 5px; 
-    
+    color: #1b4075;
+    margin-top: 0;
+    margin-bottom: 5px;
+
 }
 
 .contact-section ul {
@@ -218,18 +218,18 @@ p {
 }
 
 .card-img-top {
-  height: 200px;  
-  object-fit: cover;
-  width: 100%;
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
 }
 
 .doctor-img {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin: 20px auto 10px auto;
-  display: block;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 20px auto 10px auto;
+    display: block;
 }
 
 
@@ -261,14 +261,14 @@ p {
 }
 
 .btn-custom {
-  background-color: #003366; 
-  color: white;              
-  border-color: #003366;
+    background-color: #003366;
+    color: white;
+    border-color: #003366;
 }
 
 .btn-custom:hover {
-  background-color: #0b5ed7; 
-  border-color: #0a58ca;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
 }
 
 /* --- Estilos de Administracion--- */
@@ -284,11 +284,11 @@ body.admin-page {
 
 .admin-header .navbar-brand,
 .admin-header .nav-link {
-    color: #1a1a1a !important; 
+    color: #1a1a1a !important;
 }
 
 .admin-header .nav-link.active {
-    color: #003366 !important; 
+    color: #003366 !important;
     font-weight: 600;
 }
 
@@ -329,4 +329,17 @@ body.admin-page {
     color: #003366 !important;
     border-radius: 6px;
     font-weight: 600;
+}
+
+.admin-table-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.doctor-card-img {
+    height: 220px;
+    object-fit: cover;
+    width: 100%;
 }

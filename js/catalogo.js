@@ -1,46 +1,39 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const KEY = "medicos_clinica";
+  const KEY_MEDICOS = "medicos_clinica";
   let medicos = [];
 
-  const almacenados = localStorage.getItem(KEY);
-  if (almacenados) {
-    try {
-      medicos = JSON.parse(almacenados);
-    } catch (e) {
-      console.error("Error al leer catálogo del almacenamiento local:", e);
-      medicos = Array.isArray(window.catalogoInicial) ? window.catalogoInicial.slice() : [];
-      localStorage.setItem(KEY, JSON.stringify(medicos));
-    }
+  // Lógica de carga inicial, consistente con medicos.js
+  const datosGuardados = localStorage.getItem(KEY_MEDICOS);
+  if (datosGuardados) {
+    medicos = JSON.parse(datosGuardados);
   } else {
-    medicos = Array.isArray(window.catalogoInicial) ? window.catalogoInicial.slice() : [];
-    localStorage.setItem(KEY, JSON.stringify(medicos));
+    medicos = datosInicialesMedicos; // Usa la constante del otro archivo
+    localStorage.setItem(KEY_MEDICOS, JSON.stringify(medicos));
   }
 
   const contenedor = document.getElementById("catalogo");
   if (!contenedor) {
-    console.error("No se encontró el contenedor con id='catalogo' en el HTML.");
+    console.error("No se encontró el contenedor del catálogo.");
     return;
   }
 
-  function crearCard(m) {
+  function crearCard(medico) {
     const col = document.createElement("div");
     col.className = "col-12 col-md-6 col-lg-4";
 
+    // Usamos la clase .doctor-card-img en lugar del atributo style
     col.innerHTML = `
       <div class="card doctor-card h-100">
-        <img src="${m.foto || "img/default_doctor.png"}"
-             class="img-fluid rounded-top"
-             alt="${m.nombre} ${m.apellido}"
-             style="height: 220px; object-fit: cover; width: 100%;">
+        <img src="${medico.foto || 'img/default_doctor.png'}" class="doctor-card-img img-fluid rounded-top" alt="${medico.nombre} ${medico.apellido}">
         <div class="card-body d-flex flex-column">
-          <h5 class="card-title">${m.nombre} ${m.apellido}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Mat: ${m.matricula || "-"}</h6>
+          <h5 class="card-title">${medico.nombre} ${medico.apellido}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Mat: ${medico.matricula || "-"}</h6>
           <ul class="mb-2">
-            <li><strong>Especialidad:</strong> ${m.especialidad}</li>
-            <li><strong>Obras sociales:</strong> ${Array.isArray(m.obraSociales) ? m.obraSociales.join(", ") : m.obraSociales}</li>
-            <li><strong>Valor consulta:</strong> $${m.valorConsulta}</li>
+            <li><strong>Especialidad:</strong> ${medico.especialidad}</li>
+            <li><strong>Obras sociales:</strong> ${medico.obraSociales.join(", ")}</li>
+            <li><strong>Valor consulta:</strong> $${medico.valorConsulta.toFixed(2)}</li>
           </ul>
-          <p class="card-text flex-grow-1">${m.descripcion || ""}</p>
+          <p class="card-text flex-grow-1">${medico.descripcion || ""}</p>
           <a href="#" class="btn btn-primary btn-sm mt-auto">Agendar turno</a>
         </div>
       </div>
@@ -48,24 +41,14 @@ document.addEventListener("DOMContentLoaded", function () {
     return col;
   }
 
-  function renderizar() {
+  function renderizarCatalogo() {
     contenedor.innerHTML = "";
-    if (!Array.isArray(medicos) || medicos.length === 0) {
+    if (medicos.length === 0) {
       contenedor.innerHTML = `<p class="text-center text-muted">No hay médicos disponibles.</p>`;
       return;
     }
-
-    const fragment = document.createDocumentFragment();
-    medicos.forEach((m) => fragment.appendChild(crearCard(m)));
-    contenedor.appendChild(fragment);
+    medicos.forEach(medico => contenedor.appendChild(crearCard(medico)));
   }
 
-  renderizar();
-
-  window.addEventListener("storage", function (e) {
-    if (e.key === KEY) {
-      medicos = JSON.parse(e.newValue || "[]");
-      renderizar();
-    }
-  });
+  renderizarCatalogo();
 });

@@ -1,194 +1,187 @@
+// Espera a que el DOM esté completamente cargado para ejecutar el script
 document.addEventListener("DOMContentLoaded", function () {
-    if (localStorage.getItem("loggedIn") !== "true") {
+  // Simulación de protección de ruta: si no está logueado, redirige al login.
+  if (localStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "login.html";
+  }
+
+  // --- CONSTANTES Y REFERENCIAS DEL DOM ---
+  const KEY_MEDICOS = "medicos_clinica";
+  const PLACEHOLDER_FOTO = "img/user_placeholder.jpg";
+  const form = document.getElementById("formMedico");
+  const tbody = document.getElementById("tablaMedicos");
+  const btnCancelar = document.getElementById("btnCancelar");
+
+  // --- FUNCIONES PRINCIPALES ---
+
+  // Carga los médicos desde LocalStorage. Si no hay, los inicializa.
+  function cargarMedicos() {
+    let medicos = [];
+    const datosGuardados = localStorage.getItem(KEY_MEDICOS);
+
+    if (datosGuardados) {
+      medicos = JSON.parse(datosGuardados);
+    } else {
+      // Si no hay nada en LocalStorage, usamos los datos iniciales
+      medicos = datosInicialesMedicos;
+      guardarMedicos(medicos);
+    }
+    return medicos;
+  }
+
+  // Guarda el arreglo de médicos en LocalStorage
+  function guardarMedicos(medicos) {
+    localStorage.setItem(KEY_MEDICOS, JSON.stringify(medicos));
+  }
+
+  // Limpia el formulario y lo resetea a su estado inicial
+  function limpiarFormulario() {
+    form.reset();
+    document.getElementById("medicoId").value = ""; // Campo oculto para el ID
+    form.querySelector('button[type="submit"]').innerHTML = '<i class="fas fa-save me-1"></i>Guardar Médico';
+  }
+
+  // Renderiza (dibuja) la tabla de médicos en el HTML
+  function renderizarTabla() {
+    const medicos = cargarMedicos();
+    tbody.innerHTML = ""; // Limpiamos la tabla antes de dibujarla
+
+    if (medicos.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="8" class="text-center text-muted">No hay médicos registrados</td></tr>`;
+      return;
     }
 
-    const KEY = "medicos_clinica";
-    const PLACEHOLDER_FOTO = "img/default_doctor.png";
+    medicos.forEach((medico) => {
+      const fotoSrc = medico.foto || PLACEHOLDER_FOTO;
+      const fila = document.createElement("tr");
+      // Usamos la clase .admin-table-img en lugar de estilos en línea
+      fila.innerHTML = `
+        <td>${medico.id}</td>
+        <td><img src="${fotoSrc}" class="admin-table-img" alt="${medico.nombre}"></td>
+        <td>${medico.nombre}</td>
+        <td>${medico.apellido}</td>
+        <td>${medico.especialidad}</td>
+        <td>${medico.matricula}</td>
+        <td>$${medico.valorConsulta.toFixed(2)}</td>
+        <td>
+          <button class="btn btn-warning btn-sm editar" data-id="${medico.id}"><i class="fas fa-edit"></i></button>
+          <button class="btn btn-danger btn-sm borrar" data-id="${medico.id}"><i class="fas fa-trash"></i></button>
+        </td>
+      `;
+      tbody.appendChild(fila);
+    });
+  }
 
-    const form = document.getElementById("formMedico");
-    const tbody = document.getElementById("tablaMedicos");
-    const btnCancelar = document.getElementById("btnCancelar");
-    const submitButton = form.querySelector('button[type="submit"]');
-    const cardHeaderTitle = document.querySelector(".card-header h5");
+  // Carga los datos de un médico en el formulario para su edición
+  function cargarMedicoParaEditar(id) {
+    const medicos = cargarMedicos();
+    const medico = medicos.find(m => m.id === id);
 
-    const campos = {
-        id: document.getElementById("medicoId"),
-        nombre: document.getElementById("nombre"),
-        apellido: document.getElementById("apellido"),
-        matricula: document.getElementById("matricula"),
-        especialidad: document.getElementById("especialidad"),
-        valorConsulta: document.getElementById("valorConsulta"),
-        email: document.getElementById("email"),
-        telefono: document.getElementById("telefono"),
-        descripcion: document.getElementById("descripcion"),
-        foto: document.getElementById("foto"),
+    if (medico) {
+      document.getElementById("medicoId").value = medico.id;
+      document.getElementById("nombre").value = medico.nombre;
+      document.getElementById("apellido").value = medico.apellido;
+      document.getElementById("matricula").value = medico.matricula;
+      document.getElementById("especialidad").value = medico.especialidad;
+      document.getElementById("valorConsulta").value = medico.valorConsulta;
+      document.getElementById("email").value = medico.email;
+      document.getElementById("telefono").value = medico.telefono;
+      document.getElementById("descripcion").value = medico.descripcion;
+
+      // Marcar los checkboxes de obras sociales
+      document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = medico.obraSociales.includes(checkbox.nextElementSibling.textContent);
+      });
+
+      form.querySelector('button[type="submit"]').innerHTML = '<i class="fas fa-edit me-1"></i>Actualizar Médico';
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
+
+  // Elimina un médico del arreglo y actualiza la tabla
+  function eliminarMedico(id) {
+    if (confirm("¿Estás seguro de que quieres eliminar este médico?")) {
+      let medicos = cargarMedicos();
+      medicos = medicos.filter(m => m.id !== id);
+      guardarMedicos(medicos);
+      renderizarTabla();
+      limpiarFormulario();
+    }
+  }
+
+  // --- MANEJO DE EVENTOS ---
+
+  // Evento de envío del formulario (para crear o actualizar)
+  form.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+
+    // --- Validaciones ---
+    const matricula = document.getElementById("matricula").value;
+    const email = document.getElementById("email").value;
+
+    if (isNaN(matricula) || matricula.trim() === "") {
+      alert("Por favor, ingrese un número de matrícula válido.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Por favor, ingrese un formato de email válido.");
+      return;
+    }
+
+    // --- Lógica de guardado ---
+    const id = document.getElementById("medicoId").value;
+    const obrasSociales = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.nextElementSibling.textContent);
+
+    let medicos = cargarMedicos();
+
+    const medico = {
+      nombre: document.getElementById("nombre").value,
+      apellido: document.getElementById("apellido").value,
+      matricula: matricula,
+      especialidad: document.getElementById("especialidad").value,
+      valorConsulta: parseFloat(document.getElementById("valorConsulta").value),
+      email: email,
+      telefono: document.getElementById("telefono").value,
+      descripcion: document.getElementById("descripcion").value,
+      obraSociales: obrasSociales,
+      foto: "" // Dejamos la foto vacía por ahora
     };
 
-    function cargar() {
-        const data = localStorage.getItem(KEY);
-        let medicos = [];
-
-        if (data) {
-            try { 
-                medicos = JSON.parse(data); 
-            } catch (e) { 
-                console.error("Error al parsear LocalStorage:", e);
-            }
-        }
-        
-        if (!Array.isArray(medicos) || medicos.length === 0) {
-            if (Array.isArray(window.catalogoInicial) && window.catalogoInicial.length > 0) {
-                medicos = window.catalogoInicial.slice();
-                localStorage.setItem(KEY, JSON.stringify(medicos));
-                console.log("LocalStorage inicializado desde catalogoInicial.");
-            }
-        }
-        return medicos;
+    if (id) { // Si hay un ID, estamos editando
+      const indice = medicos.findIndex(m => m.id == id);
+      medico.id = parseInt(id);
+      medico.foto = medicos[indice].foto; // Mantenemos la foto anterior
+      medicos[indice] = medico;
+      alert("Médico actualizado con éxito!");
+    } else { // Si no hay ID, estamos creando uno nuevo
+      const nuevoId = Math.max(0, ...medicos.map(m => m.id || 0)) + 1;
+      medico.id = nuevoId;
+      medicos.push(medico);
+      alert("Médico guardado con éxito!");
     }
 
-    function guardar(medicos) {
-        localStorage.setItem(KEY, JSON.stringify(medicos));
-        window.dispatchEvent(new StorageEvent('storage', {
-            key: KEY,
-            newValue: JSON.stringify(medicos),
-            oldValue: JSON.stringify(cargar()) 
-        }));
+    guardarMedicos(medicos);
+    renderizarTabla();
+    limpiarFormulario();
+  });
+
+  // Eventos para los botones de la tabla (usando delegación de eventos)
+  tbody.addEventListener("click", function (evento) {
+    if (evento.target.closest(".editar")) {
+      const id = parseInt(evento.target.closest(".editar").dataset.id);
+      cargarMedicoParaEditar(id);
     }
-
-    function limpiarFormulario() {
-        form.reset();
-        campos.id.value = "";
-        submitButton.innerHTML = '<i class="fas fa-save me-1"></i>Guardar Médico';
-        cardHeaderTitle.innerHTML = '<i class="fas fa-user-plus me-2"></i>Agregar/Editar Médico';
+    if (evento.target.closest(".borrar")) {
+      const id = parseInt(evento.target.closest(".borrar").dataset.id);
+      eliminarMedico(id);
     }
+  });
 
-    function renderTabla() {
-        const medicos = cargar();
-        tbody.innerHTML = "";
-        if (!medicos.length) {
-            tbody.innerHTML = `<tr><td colspan="8" class="text-center text-muted">No hay médicos registrados</td></tr>`;
-            return;
-        }
+  // Evento para el botón de cancelar
+  btnCancelar.addEventListener("click", limpiarFormulario);
 
-        medicos.forEach((m, i) => {
-            const fotoSrc = m.foto && m.foto.startsWith("data:image") ? m.foto : (m.foto || PLACEHOLDER_FOTO);
-
-            const fila = document.createElement("tr");
-            fila.innerHTML = `
-                <td>${m.id || 'N/A'}</td> 
-                <td><img src="${fotoSrc}" alt="${m.nombre}" style="width:60px;height:60px;object-fit:cover;border-radius:8px"></td>
-                <td>${m.nombre}</td>
-                <td>${m.apellido}</td>
-                <td>${m.especialidad}</td>
-                <td>${m.matricula}</td>
-                <td>$${(m.valorConsulta || 0).toFixed(2)}</td>
-                <td>
-                    <button class="btn btn-warning btn-sm me-1 editar" data-index="${i}"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-danger btn-sm borrar" data-index="${i}"><i class="fas fa-trash"></i></button>
-                </td>
-            `;
-            tbody.appendChild(fila);
-        });
-    }
-
-    function cargarParaEditar(i) {
-        const m = cargar()[i];
-        if (!m) return;
-
-        campos.id.value = i;
-        campos.nombre.value = m.nombre;
-        campos.apellido.value = m.apellido;
-        campos.matricula.value = m.matricula;
-        campos.especialidad.value = m.especialidad;
-        campos.valorConsulta.value = m.valorConsulta;
-        campos.email.value = m.email;
-        campos.telefono.value = m.telefono;
-        campos.descripcion.value = m.descripcion;
-        
-        document.querySelectorAll("input[type=checkbox]").forEach(c => {
-            const label = c.nextElementSibling.textContent.trim();
-            c.checked = m.obraSociales?.includes(label);
-        });
-
-        submitButton.innerHTML = '<i class="fas fa-edit me-1"></i>Actualizar Médico';
-        cardHeaderTitle.innerHTML = `<i class="fas fa-edit me-2"></i>Editar Médico (Index: ${i})`;
-        
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function eliminarMedico(i) {
-        if (confirm("¿Estás seguro de que quieres eliminar este médico?")) {
-            const medicos = cargar();
-            medicos.splice(i, 1);
-            guardar(medicos);
-            renderTabla();
-            limpiarFormulario();
-        }
-    }
-
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        
-        const medicos = cargar();
-        const idx = campos.id.value;
-
-        const obras = Array.from(document.querySelectorAll("input[type=checkbox]:checked")).map(
-            (c) => c.nextElementSibling.textContent.trim()
-        );
-
-        const isEditing = !!idx;
-
-        const nuevo = {
-            id: isEditing ? medicos[idx].id : (Math.max(0, ...medicos.map(m => m.id || 0)) + 1),
-            nombre: campos.nombre.value.trim(),
-            apellido: campos.apellido.value.trim(),
-            matricula: campos.matricula.value.trim(),
-            especialidad: campos.especialidad.value.trim(),
-            valorConsulta: parseFloat(campos.valorConsulta.value) || 0,
-            email: campos.email.value.trim(),
-            telefono: campos.telefono.value.trim(),
-            obraSociales: obras,
-            descripcion: campos.descripcion.value.trim(),
-            foto: isEditing ? (medicos[idx]?.foto || "") : ""
-        };
-
-        const archivo = campos.foto.files[0];
-        if (archivo) {
-            const lector = new FileReader();
-            lector.onload = e => {
-                nuevo.foto = e.target.result;
-                guardarMedico(nuevo, medicos, idx);
-            };
-            lector.readAsDataURL(archivo);
-        } else {
-            guardarMedico(nuevo, medicos, idx);
-        }
-    });
-
-    function guardarMedico(nuevo, medicos, idx) {
-        if (idx) medicos[idx] = nuevo;
-        else medicos.push(nuevo);
-
-        guardar(medicos);
-        renderTabla();
-        limpiarFormulario();
-    }
-
-
-    tbody.addEventListener("click", e => {
-        const btnEditar = e.target.closest(".editar");
-        const btnBorrar = e.target.closest(".borrar");
-
-        if (btnEditar) {
-            const i = parseInt(btnEditar.dataset.index);
-            cargarParaEditar(i);
-        } else if (btnBorrar) {
-            const i = parseInt(btnBorrar.dataset.index);
-            eliminarMedico(i);
-        }
-    });
-
-    btnCancelar.addEventListener("click", limpiarFormulario);
-
-    renderTabla();
+  // --- INICIALIZACIÓN ---
+  renderizarTabla();
 });
