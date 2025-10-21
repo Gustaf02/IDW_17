@@ -1,6 +1,5 @@
-// Espera a que el DOM esté completamente cargado para ejecutar el script
+
 document.addEventListener("DOMContentLoaded", function () {
-  // Simulación de protección de ruta: si no está logueado, redirige al login.
   if (localStorage.getItem("loggedIn") !== "true") {
     window.location.href = "login.html";
   }
@@ -37,14 +36,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Limpia el formulario y lo resetea a su estado inicial
   function limpiarFormulario() {
     form.reset();
-    document.getElementById("medicoId").value = ""; // Campo oculto para el ID
+    document.getElementById("medicoId").value = "";
     form.querySelector('button[type="submit"]').innerHTML = '<i class="fas fa-save me-1"></i>Guardar Médico';
   }
 
-  // Renderiza (dibuja) la tabla de médicos en el HTML
+  // Renderiza la tabla de médicos en el HTML
   function renderizarTabla() {
     const medicos = cargarMedicos();
-    tbody.innerHTML = ""; // Limpiamos la tabla antes de dibujarla
+    tbody.innerHTML = ""; // Limpia la tabla antes de dibujarla
 
     if (medicos.length === 0) {
       tbody.innerHTML = `<tr><td colspan="8" class="text-center text-muted">No hay médicos registrados</td></tr>`;
@@ -54,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
     medicos.forEach((medico) => {
       const fotoSrc = medico.foto || PLACEHOLDER_FOTO;
       const fila = document.createElement("tr");
-      // Usamos la clase .admin-table-img en lugar de estilos en línea
       fila.innerHTML = `
         <td>${medico.id}</td>
         <td><img src="${fotoSrc}" class="admin-table-img" alt="${medico.nombre}"></td>
@@ -130,7 +128,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // --- Lógica de guardado ---
     const id = document.getElementById("medicoId").value;
     const obrasSociales = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.nextElementSibling.textContent);
 
@@ -146,16 +143,16 @@ document.addEventListener("DOMContentLoaded", function () {
       telefono: document.getElementById("telefono").value,
       descripcion: document.getElementById("descripcion").value,
       obraSociales: obrasSociales,
-      foto: "" // Dejamos la foto vacía por ahora
+      foto: ""
     };
 
-    if (id) { // Si hay un ID, estamos editando
+    if (id) {
       const indice = medicos.findIndex(m => m.id == id);
       medico.id = parseInt(id);
-      medico.foto = medicos[indice].foto; // Mantenemos la foto anterior
+      medico.foto = medicos[indice].foto;
       medicos[indice] = medico;
       alert("Médico actualizado con éxito!");
-    } else { // Si no hay ID, estamos creando uno nuevo
+    } else {
       const nuevoId = Math.max(0, ...medicos.map(m => m.id || 0)) + 1;
       medico.id = nuevoId;
       medicos.push(medico);
@@ -167,7 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
     limpiarFormulario();
   });
 
-  // Eventos para los botones de la tabla (usando delegación de eventos)
   tbody.addEventListener("click", function (evento) {
     if (evento.target.closest(".editar")) {
       const id = parseInt(evento.target.closest(".editar").dataset.id);
@@ -179,7 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Evento para el botón de cancelar
   btnCancelar.addEventListener("click", limpiarFormulario);
 
   // --- INICIALIZACIÓN ---

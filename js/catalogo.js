@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const col = document.createElement("div");
     col.className = "col-12 col-md-6 col-lg-4";
 
-    // Usamos la clase .doctor-card-img en lugar del atributo style
+    // Uso de la clase .doctor-card-img en lugar del atributo style
     col.innerHTML = `
       <div class="card doctor-card h-100">
         <img src="${medico.foto || 'img/default_doctor.png'}" class="doctor-card-img img-fluid rounded-top" alt="${medico.nombre} ${medico.apellido}">
