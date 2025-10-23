@@ -343,3 +343,30 @@ body.admin-page {
     object-fit: cover;
     width: 100%;
 }
+
+/* --- Estilo de Login --- */
+
+.login-body {
+    background-color: #f8f9fa; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    font-family: 'Poppins', sans-serif; 
+}
+
+.login-main {
+    flex-grow: 1; 
+    padding-top: 80px; 
+    padding-bottom: 50px;
+}
+
+.login-card {
+    max-width: 450px; 
+    width: 100%; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+}
+
+.login-body > footer {
+    margin-top: auto;
+}
