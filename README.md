@@ -41,6 +41,10 @@ El sitio cuenta actualmente con las siguientes páginas:
 - Incluye la visión, misión y objetivos
 - Presenta un catálogo resumido de profesionales
 - Proporciona detalles sobre las instalaciones y certificaciones que la clínica posee
+- Implementación de Llamadas a la Acción
+    - Botón "Nuestros profesionales" (Lleva al Catálogo de Médicos)
+    - Botón "Reservar turno" (Funcionalidad de reserva no desarrollada)
+    - Botón "Conocer especialidades" (Catálogo de especialidades no desarrollado)
 
 ### 3. Contacto.html (Página de Contacto)
 - Ofrece los principales canales de comunicación
@@ -56,7 +60,7 @@ El sitio cuenta actualmente con las siguientes páginas:
 - Contiene un formulario para ingresar usuario y contraseña
 
 ### 6. Administracion.html (Panel de administración de médicos)
-- Contiene un formulario para agregar, editar o eliminar medicos
+- Contiene un formulario para agregar, editar o eliminar médicos
 - Muestra los profesionales actuales en una tabla HTML
 
 ### 7. Estilos.css (Hoja de Estilos)
@@ -77,11 +81,11 @@ El sitio cuenta actualmente con las siguientes páginas:
 - Controla el acceso al área de administración
 
 ### 4. Medicos.js
-- Contiene la ligica del CRUD de medicos permitiendo añadir, editar o eliminar profesionales
+- Contiene la ligica del CRUD de médicos permitiendo añadir, editar o eliminar profesionales
 
 ### 5. DatosIniciales.js
 - Inicializa el LocalStorage si aun no hay datos de profesionales guardados
-- Contiene un array con los datos de los medicos mostrados en el catalogo
+- Contiene un array con los datos de los médicos mostrados en el catalogo
 
 ## Tecnologías Utilizadas
 - HTML5
@@ -134,7 +138,11 @@ IDW_17/
 ## Estado del Proyecto
 ✅ **Primera entrega completada** - Estructura básica del sitio web
 ✅ **Segunda entrega completada** - Diseño responsivo y Bootstrap 5
-✅ **Tercera entrega completada** - CRUD js, DOM y LocalStorage
+✅ **Tercera entrega completada** - CRUD con JavaScript, DOM y LocalStorage
+
+### Datos para el inicio de sesion
+**Usuario:** admin
+**Contraseña:** admin
 
 ---
 
