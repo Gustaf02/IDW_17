@@ -81,7 +81,7 @@ El sitio cuenta actualmente con las siguientes páginas:
 - Controla el acceso al área de administración
 
 ### 4. Medicos.js
-- Contiene la ligica del CRUD de médicos permitiendo añadir, editar o eliminar profesionales
+- Contiene la lógica del CRUD de médicos permitiendo añadir, editar o eliminar profesionales
 
 ### 5. DatosIniciales.js
 - Inicializa el LocalStorage si aun no hay datos de profesionales guardados
