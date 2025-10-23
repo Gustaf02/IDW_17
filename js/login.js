@@ -1,4 +1,3 @@
-// Se ejecuta cuando el DOM está completamente cargado
 document.addEventListener('DOMContentLoaded', function () {
     const formLogin = document.getElementById('formLogin');
 

@@ -2,12 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const KEY_MEDICOS = "medicos_clinica";
   let medicos = [];
 
-  // Lógica de carga inicial, consistente con medicos.js
+
   const datosGuardados = localStorage.getItem(KEY_MEDICOS);
   if (datosGuardados) {
     medicos = JSON.parse(datosGuardados);
   } else {
-    medicos = datosInicialesMedicos; // Usa la constante del otro archivo
+    medicos = datosInicialesMedicos;
     localStorage.setItem(KEY_MEDICOS, JSON.stringify(medicos));
   }
 
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const col = document.createElement("div");
     col.className = "col-12 col-md-6 col-lg-4";
 
-    // Uso de la clase .doctor-card-img en lugar del atributo style
+    
     col.innerHTML = `
       <div class="card doctor-card h-100">
         <img src="${medico.foto || 'img/default_doctor.png'}" class="doctor-card-img img-fluid rounded-top" alt="${medico.nombre} ${medico.apellido}">

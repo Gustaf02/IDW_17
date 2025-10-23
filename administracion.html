@@ -17,7 +17,6 @@
     <main class="container my-5 pt-5">
         <h1 class="text-primary fw-bold mb-4">Administración de Médicos</h1>
 
-        <!-- FORMULARIO -->
         <section class="card shadow mb-5 admin-card">
             <div class="card-header bg-primary text-white">
                 <h5 class="mb-0">
@@ -29,7 +28,6 @@
                     <input type="hidden" id="medicoId" value="" />
 
                     <div class="row">
-                        <!-- Fila 1: Nombre, Apellido, Matrícula -->
                         <div class="col-md-4 mb-3">
                             <label class="form-label">Nombre *</label>
                             <input type="text" class="form-control" id="nombre" required />
@@ -45,7 +43,6 @@
                             <input type="number" class="form-control" id="matricula" required />
                         </div>
 
-                        <!-- Fila 2: Especialidad -->
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Especialidad *</label>
                             <input type="text" class="form-control" id="especialidad" required
@@ -61,7 +58,6 @@
                             </div>
                         </div>
 
-                        <!-- Fila 3: Contacto -->
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Email *</label>
                             <input type="email" class="form-control" id="email" required />
@@ -72,7 +68,6 @@
                             <input type="tel" class="form-control" id="telefono" />
                         </div>
 
-                        <!-- Fila 4: Obras Sociales -->
                         <div class="col-12 mb-3">
                             <label class="form-label">Obras Sociales que Acepta</label>
                             <div class="row">
@@ -120,20 +115,17 @@
                             </div>
                         </div>
 
-                        <!-- Fila 5: Descripción -->
                         <div class="col-12 mb-3">
                             <label class="form-label">Descripción *</label>
                             <textarea class="form-control" id="descripcion" rows="3" required
                                 placeholder="Presentación del profesional..."></textarea>
                         </div>
 
-                        <!-- Fila 6: Foto -->
                         <div class="col-12 mb-3">
                             <label class="form-label">Fotografía</label>
                             <input type="file" class="form-control" id="foto" accept="image/*" />
                         </div>
 
-                        <!-- Fila 7: Botones -->
                         <div class="col-12">
                             <button type="submit" class="btn btn-success me-2">
                                 <i class="fas fa-save me-1"></i>Guardar Médico
@@ -147,7 +139,6 @@
             </div>
         </section>
 
-        <!-- TABLA -->
         <section class="card shadow admin-card">
             <div class="card-header bg-info text-white">
                 <h5 class="mb-0">

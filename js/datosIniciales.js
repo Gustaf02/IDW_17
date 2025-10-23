@@ -1,5 +1,3 @@
-// Datos iniciales para el catálogo de médicos.
-// Este arreglo se usa para inicializar el LocalStorage si está vacío.
 const datosInicialesMedicos = [
   {
     id: 1,
@@ -168,7 +166,6 @@ const datosInicialesMedicos = [
   }
 ];
 
-// Datos iniciales para especialidades
 const datosInicialesEspecialidades = [
     { id: 1, nombre: "Cardiología" },
     { id: 2, nombre: "Dermatología" },
