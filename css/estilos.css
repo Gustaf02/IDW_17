@@ -370,3 +370,8 @@ body.admin-page {
 .login-body > footer {
     margin-top: auto;
 }
+
+main {
+    padding-top: 40px; 
+}
+
