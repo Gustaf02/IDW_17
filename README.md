@@ -39,8 +39,11 @@ El sitio cuenta actualmente con las siguientes páginas:
 ### 2. Institucional.html (Información Institucional)
 - Presenta información general sobre la organización
 - Incluye la visión, misión y objetivos
-- Presenta un catálogo resumido de profesionales
 - Proporciona detalles sobre las instalaciones y certificaciones que la clínica posee
+- Implementación de Llamadas a la Acción (CTA)
+    - Botón **"Nuestros profesionales"** (Lleva al Catálogo de Médicos).
+    - Botón **"Reservar turno"** (Funcionalidad de reserva no desarrollada).
+    - Botón **"Conocer especialidades"** (Catálogo de especialidades no desarrollado).
 
 ### 3. Contacto.html (Página de Contacto)
 - Ofrece los principales canales de comunicación
