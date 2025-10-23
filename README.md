@@ -26,7 +26,7 @@ En esta etapa se incorporaron funcionalidades dinámicas con JavaScript para la 
 ## Nuestra página web
 ¡Aquí se puede ver nuestro proyecto en vivo!
 
-[![Ver Proyecto](https://img.shields.io/badge/Ver_Clínica-007bff?style=for-the-badge&logo=heart&logoColor=fff)](https://raw.githack.com/Gustaf02/IDW_17/refs/heads/main/index.html)
+[![Ver Proyecto](https://img.shields.io/badge/Ver_Clínica-007bff?style=for-the-badge&logo=heart&logoColor=fff)](https://gustaf02.github.io/IDW_17/)
 
 ## Estructura del Sitio Web
 El sitio cuenta actualmente con las siguientes páginas:
