@@ -31,7 +31,6 @@ p {
     background-color: #003366 !important;
 }
 
-
 /* --- Estilos de la página de Contacto --- */
 .contact-section {
     padding: 60px 0;
@@ -347,31 +346,83 @@ body.admin-page {
 /* --- Estilo de Login --- */
 
 .login-body {
-    background-color: #f8f9fa; 
+    background-color: #f8f9fa;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; 
-    font-family: 'Poppins', sans-serif; 
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
 }
 
 .login-main {
-    flex-grow: 1; 
-    padding-top: 80px; 
+    flex-grow: 1;
+    padding-top: 80px;
     padding-bottom: 50px;
 }
 
 .login-card {
-    max-width: 450px; 
-    width: 100%; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    max-width: 450px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.login-body > footer {
+.login-body>footer {
     margin-top: auto;
 }
 
 main {
-    padding-top: 40px; 
+    padding-top: 40px;
 }
 
+/* --- Estilos para las Tarjetas de Usuarios --- */
+
+.user-card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.user-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 51, 102, 0.2) !important;
+}
+
+.user-avatar-container {
+    height: 80px;
+    width: 80px;
+    margin: 0 auto 15px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 5px;
+    box-shadow: 0 0 0 2px #d4d4d4;
+}
+
+.user-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+
+}
+
+.user-card .card-title {
+    color: #003366;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.user-card .bg-light {
+    background-color: #f8f9fa !important;
+    border: 1px solid #eee;
+}
+
+.user-card strong {
+    color: #333;
+}
+
+.admin-card {
+
+    box-shadow: 0 2px 8px rgba(0, 51, 102, 0.1);
+    border: 4px solid #003366 !important;
+
+}
