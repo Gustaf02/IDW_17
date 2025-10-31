@@ -36,6 +36,7 @@ const manejarNavegacionAdministracion = () => {
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="adminDropdown">
                     <li><a class="dropdown-item" href="administracion.html"><i class="fas fa-user-md me-2"></i> Médicos</a></li>
                     <li><a class="dropdown-item" href="administracion-especialidades.html"><i class="fas fa-stethoscope me-2"></i> Especialidades</a></li>
+                    <li><a class="dropdown-item" href="usuarios.html"><i class="fas fa-users me-2"></i> Usuarios</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item text-danger" href="#" id="btnLogout"><i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión</a></li>
                 </ul>
