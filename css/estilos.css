@@ -31,6 +31,7 @@ p {
     background-color: #003366 !important;
 }
 
+
 /* --- Estilos de la página de Contacto --- */
 .contact-section {
     padding: 60px 0;
@@ -55,10 +56,10 @@ p {
 }
 
 .contact-section .list-unstyled h5 {
-    color: #1b4075;
-    margin-top: 0;
-    margin-bottom: 5px;
-
+    color: #1b4075; 
+    margin-top: 0; 
+    margin-bottom: 5px; 
+    
 }
 
 .contact-section ul {
@@ -217,18 +218,18 @@ p {
 }
 
 .card-img-top {
-    height: 200px;
-    object-fit: cover;
-    width: 100%;
+  height: 200px;  
+  object-fit: cover;
+  width: 100%;
 }
 
 .doctor-img {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin: 20px auto 10px auto;
-    display: block;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 20px auto 10px auto;
+  display: block;
 }
 
 
@@ -260,14 +261,14 @@ p {
 }
 
 .btn-custom {
-    background-color: #003366;
-    color: white;
-    border-color: #003366;
+  background-color: #003366; 
+  color: white;              
+  border-color: #003366;
 }
 
 .btn-custom:hover {
-    background-color: #0b5ed7;
-    border-color: #0a58ca;
+  background-color: #0b5ed7; 
+  border-color: #0a58ca;
 }
 
 /* --- Estilos de Administracion--- */
@@ -283,11 +284,11 @@ body.admin-page {
 
 .admin-header .navbar-brand,
 .admin-header .nav-link {
-    color: #1a1a1a !important;
+    color: #1a1a1a !important; 
 }
 
 .admin-header .nav-link.active {
-    color: #003366 !important;
+    color: #003366 !important; 
     font-weight: 600;
 }
 
@@ -330,99 +331,31 @@ body.admin-page {
     font-weight: 600;
 }
 
-.admin-table-img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 8px;
+.mt-superior {
+  margin-top: 140px; 
 }
 
-.doctor-card-img {
-    height: 220px;
-    object-fit: cover;
-    width: 100%;
+/* Centrar todas las columnas */
+table td {
+    vertical-align: middle;
 }
 
-/* --- Estilo de Login --- */
-
-.login-body {
-    background-color: #f8f9fa;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: 'Poppins', sans-serif;
+/* Columna ID */
+table td:nth-child(1) {
+    text-align: center;
 }
 
-.login-main {
-    flex-grow: 1;
-    padding-top: 80px;
-    padding-bottom: 50px;
+/* Columna Nombre */
+table td:nth-child(2) {
+    text-align: center; 
 }
 
-.login-card {
-    max-width: 450px;
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+/* Columna Porcentaje */
+table td:nth-child(3) {
+    text-align: center;
 }
 
-.login-body>footer {
-    margin-top: auto;
-}
-
-main {
-    padding-top: 40px;
-}
-
-/* --- Estilos para las Tarjetas de Usuarios --- */
-
-.user-card {
-    border: none;
-    border-radius: 10px;
-    transition: transform 0.2s;
-}
-
-.user-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 51, 102, 0.2) !important;
-}
-
-.user-avatar-container {
-    height: 80px;
-    width: 80px;
-    margin: 0 auto 15px auto;
-    border-radius: 50%;
-    overflow: hidden;
-    padding: 5px;
-    box-shadow: 0 0 0 2px #d4d4d4;
-}
-
-.user-avatar {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-
-}
-
-.user-card .card-title {
-    color: #003366;
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-.user-card .bg-light {
-    background-color: #f8f9fa !important;
-    border: 1px solid #eee;
-}
-
-.user-card strong {
-    color: #333;
-}
-
-.admin-card {
-
-    box-shadow: 0 2px 8px rgba(0, 51, 102, 0.1);
-    border: 4px solid #003366 !important;
-
+/* Columna Acciones */
+table td:nth-child(4) {
+    text-align: center;
 }
