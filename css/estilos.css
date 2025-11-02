@@ -335,27 +335,37 @@ body.admin-page {
   margin-top: 140px; 
 }
 
-/* Centrar todas las columnas */
 table td {
     vertical-align: middle;
 }
 
-/* Columna ID */
-table td:nth-child(1) {
+#tablaMedicos td:nth-child(1),
+#tablaMedicos td:nth-child(2) {
     text-align: center;
 }
 
-/* Columna Nombre */
-table td:nth-child(2) {
-    text-align: center; 
+#tablaMedicos td:nth-child(3),
+#tablaMedicos td:nth-child(4),
+#tablaMedicos td:nth-child(5) {
+    text-align: left;
 }
 
-/* Columna Porcentaje */
-table td:nth-child(3) {
+#tablaMedicos td:nth-child(6) {
     text-align: center;
 }
 
-/* Columna Acciones */
-table td:nth-child(4) {
+#tablaMedicos td:nth-child(7) {
+    text-align: right;
+    padding-right: 15px;
+}
+
+#tablaMedicos td:nth-child(8) {
     text-align: center;
+}
+
+.admin-table-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid #ddd;
 }

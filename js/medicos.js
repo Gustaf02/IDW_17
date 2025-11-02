@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  
-  if (localStorage.getItem("loggedIn") !== "true") {
-    window.location.href = "login.html";
-  }
 
   const KEY_MEDICOS = "medicos_clinica";
   const PLACEHOLDER_FOTO = "img/user_placeholder.jpg";
@@ -63,10 +59,10 @@ document.addEventListener("DOMContentLoaded", function () {
         <td>$${medico.valorConsulta.toFixed(2)}</td>
         <td>
           <button class="btn btn-warning btn-sm editar" data-id="${medico.id}">
-            <i class="fas fa-edit"></i>
+            <i class="fas fa-edit me-1"></i> Editar
           </button>
           <button class="btn btn-danger btn-sm borrar" data-id="${medico.id}">
-            <i class="fas fa-trash"></i>
+            <i class="fas fa-trash me-1"></i> Eliminar
           </button>
         </td>
       `;
