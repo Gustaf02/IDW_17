@@ -1,5 +1,3 @@
-// js/turnos.js
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const KEY_MEDICOS = "medicos_clinica";
@@ -32,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderizarTablaTurnos() {
-    // --- Cargar datos iniciales si localStorage está vacío ---
     let turnos = JSON.parse(localStorage.getItem(KEY_TURNOS));
     let reservas = JSON.parse(localStorage.getItem(KEY_RESERVAS));
 
@@ -49,22 +46,18 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (!reservas) {
         reservas = [];
     }
-    // --- FIN DE LA MODIFICACIÓN ---
 
-    tbody.innerHTML = ""; // Limpia la tabla
+    tbody.innerHTML = "";
 
     if (turnos.length === 0) {
         tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted">No hay turnos registrados.</td></tr>`;
         return;
     }
 
-    // ===== INICIO DE LA CORRECCIÓN (Este bucle faltaba) =====
     turnos.forEach(turno => {
-        // Buscamos los datos del médico
         const medico = medicos.find(m => m.id === turno.id_medico);
         const nombreMedico = medico ? `${medico.nombre} ${medico.apellido}` : "Médico no encontrado";
 
-        // Formateamos la fecha
         const fecha = new Date(turno.fechaHora);
         const fechaFormateada = fecha.toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' }) + ' hs.';
 
@@ -73,13 +66,10 @@ document.addEventListener("DOMContentLoaded", () => {
             estado = `<span class="badge bg-success">Disponible</span>`;
             paciente = "-";
         } else {
-            // Si no está disponible, buscamos la reserva
             const reserva = reservas.find(r => r.id_turno === turno.id);
             estado = `<span class="badge bg-warning">Ocupado</span>`;
             paciente = reserva ? reserva.nombre_paciente : "No disponible";
         }
-
-        // Dibujamos la fila
         const fila = document.createElement("tr");
         fila.innerHTML = `
             <td>${turno.id}</td>
@@ -98,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         tbody.appendChild(fila);
     });
-    // ===== FIN DE LA CORRECCIÓN =====
 }
 
     function limpiarFormulario() {
