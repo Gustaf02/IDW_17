@@ -167,18 +167,63 @@ const datosInicialesMedicos = [
 ];
 
 const datosInicialesEspecialidades = [
-    { id: 1, nombre: "Cardiología" },
-    { id: 2, nombre: "Dermatología" },
-    { id: 3, nombre: "Pediatría" },
-    { id: 4, nombre: "Traumatología" },
-    { id: 5, nombre: "Ginecología" },
-    { id: 6, nombre: "Neurología" },
-    { id: 7, nombre: "Reumatología" },
-    { id: 8, nombre: "Endocrinología" },
-    { id: 9, nombre: "Nutrición" },
-    { id: 10, nombre: "Oftalmología" },
-    { id: 11, nombre: "Cirugía general" },
-    { id: 12, nombre: "Endodoncia" },
-    { id: 13, nombre: "Urología" },
-    { id: 14, nombre: "Fonoaudiología" }
+  { id: 1, nombre: "Cardiología" },
+  { id: 2, nombre: "Dermatología" },
+  { id: 3, nombre: "Pediatría" },
+  { id: 4, nombre: "Traumatología" },
+  { id: 5, nombre: "Ginecología" },
+  { id: 6, nombre: "Neurología" },
+  { id: 7, nombre: "Reumatología" },
+  { id: 8, nombre: "Endocrinología" },
+  { id: 9, nombre: "Nutrición" },
+  { id: 10, nombre: "Oftalmología" },
+  { id: 11, nombre: "Cirugía general" },
+  { id: 12, nombre: "Endodoncia" },
+  { id: 13, nombre: "Urología" },
+  { id: 14, nombre: "Fonoaudiología" }
+];
+
+const datosInicialesObrasSociales = [
+  { id: 1, nombre: "OSDE", descuento: 40 },
+  { id: 2, nombre: "Swiss Medical", descuento: 75 },
+  { id: 3, nombre: "Galeno", descuento: 50 },
+  { id: 4, nombre: "OSER", descuento: 20 },
+  { id: 5, nombre: "PAMI", descuento: 100 },
+  { id: 6, nombre: "Particular", descuento: 0 },
+  { id: 7, nombre: "Otra", descuento: 0 }
+];
+
+const datosInicialesTurnos = [
+  // Turnos para Dr. Mario Gómez (ID 1)
+  { id: 5, id_medico: 1, fechaHora: "2025-11-11T09:00", disponible: true },
+  { id: 6, id_medico: 1, fechaHora: "2025-11-11T10:00", disponible: false }, // Ocupado
+  // Turnos para Dr. Juan Pérez (ID 2)
+  { id: 1, id_medico: 2, fechaHora: "2025-11-10T10:00", disponible: true },
+  { id: 2, id_medico: 2, fechaHora: "2025-11-10T11:00", disponible: true },
+  { id: 3, id_medico: 2, fechaHora: "2025-11-12T15:00", disponible: false }, // Ocupado
+  { id: 4, id_medico: 2, fechaHora: "2025-11-12T16:00", disponible: true },
+];
+
+const datosInicialesReservas = [
+  {
+    id: 1,
+    id_turno: 3,
+    id_medico: 2,
+    especialidad: "Cardiología",
+    valor_total: 18000.00,
+    nombre_paciente: "Emily Johnson (Dummy)",
+    documento: "D-987654",
+    obra_social: "Particular"
+  },
+
+  {
+    id: 2,
+    id_turno: 6,
+    id_medico: 1,
+    especialidad: "Dermatología",
+    valor_total: 12800.00,
+    nombre_paciente: "Michael Williams (Dummy)",
+    documento: "D-123456",
+    obra_social: "Galeno"
+  }
 ];
