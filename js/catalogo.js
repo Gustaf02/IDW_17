@@ -17,11 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
+
   function crearCard(medico) {
     const col = document.createElement("div");
     col.className = "col-12 col-md-6 col-lg-4";
 
-    
+    const botonReserva = `<a href="reserva.html?medicoId=${medico.id}" class="btn btn-primary btn-sm mt-auto">Agendar turno</a>`;
+
     col.innerHTML = `
       <div class="card doctor-card h-100">
         <img src="${medico.foto || 'img/default_doctor.png'}" class="doctor-card-img img-fluid rounded-top" alt="${medico.nombre} ${medico.apellido}">
@@ -34,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <li><strong>Valor consulta:</strong> $${medico.valorConsulta.toFixed(2)}</li>
           </ul>
           <p class="card-text flex-grow-1">${medico.descripcion || ""}</p>
-          <a href="#" class="btn btn-primary btn-sm mt-auto">Agendar turno</a>
+          ${botonReserva}
         </div>
       </div>
     `;
