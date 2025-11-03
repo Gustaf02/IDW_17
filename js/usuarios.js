@@ -46,9 +46,6 @@ function crearTarjetaUsuario(user) {
     `;
 }
 
-/**
- * Función para cargar y mostrar los usuarios de dummyjson.com.
- */
 async function cargarUsuarios() {
   const contenedor = document.getElementById("contenedorTarjetasUsuarios");
 
@@ -80,7 +77,7 @@ async function cargarUsuarios() {
     console.error("Error al cargar los usuarios:", error);
     contenedor.innerHTML = `<div class="col-12 text-center text-danger">
                                     <i class="fas fa-exclamation-triangle me-2"></i>
-                                    Error al cargar los usuarios: ${error.message}
-                               </div>`;
+                                    Error al cargar los usuarios{error.message}
+    </div>`;
   }
 }
