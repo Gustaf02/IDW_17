@@ -51,14 +51,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderizarInfoMedico() {
-        infoMedicoCont.innerHTML = `
-            <img src="${medico.foto || 'img/default_doctor.png'}" class="img-fluid rounded-circle mb-3" alt="${medico.nombre}" style="width: 150px; height: 150px; object-fit: cover;">
-            <div class="card-body">
-                <h4 class="card-title">${medico.nombre} ${medico.apellido}</h4>
-                <h6 class="card-subtitle mb-2 text-primary">${medico.especialidad}</h6>
-                <p class="text-muted">Matrícula: ${medico.matricula}</p>
-            </div>
-            `;
+       infoMedicoCont.innerHTML = `
+    <div class="text-center">
+        <img src="${medico.foto || "img/default_doctor.png"}" class="img-fluid rounded-circle mb-3" alt="${medico.nombre}" style="width: 150px; height: 150px; object-fit: cover;">
+        <h4 class="card-title mb-1">${medico.nombre} ${medico.apellido}</h4>
+        <h6 class="card-subtitle mb-2 text-primary">${medico.especialidad}</h6>
+        <p class="text-muted">Matrícula: ${medico.matricula}</p>
+    </div>
+    <div id="calculo-precio" class="mt-4 text-start"></div>
+`;
+
         document.getElementById("medicoId").value = medico.id;
         document.getElementById("especialidad").value = medico.especialidad;
         document.getElementById("valorConsulta").value = medico.valorConsulta;
@@ -166,11 +168,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         localStorage.setItem(KEY_TURNOS, JSON.stringify(turnosActualizados));
 
+        const descuentoAplicado = valorBase * (osDescuento / 100);
+
         alert(`¡Reserva confirmada con éxito!
         \nPaciente: ${nuevaReserva.nombre_paciente}
         \nObra Social: ${nuevaReserva.obra_social}
+        \nValor de la consulta: $${valorBase.toFixed(2)}
+        \nDescuento aplicado: $${descuentoAplicado.toFixed(2)}
         \nTotal Pagado: $${nuevaReserva.valor_total.toFixed(2)}
-        \n\nSerá redirigido a la página principal.`);
+        \nSerá redirigido a la página principal.`);
 
         window.location.href = "index.html";
     });
