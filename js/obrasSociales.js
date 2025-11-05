@@ -76,10 +76,32 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!confirm("¿Seguro que querés eliminar esta obra social?")) return;
 
     const obras = cargarObras().filter((o) => o.id !== id);
+
     guardarObras(obras);
+
+    let medicos = JSON.parse(localStorage.getItem("medicos_clinica")) || [];
+
+    const obraEliminada = datosInicialesObrasSociales.find(
+      (o) => o.id === id
+    ) || { nombre: "" };
+
+    medicos = medicos.map((med) => ({
+      ...med,
+      obraSociales: med.obraSociales.filter(
+        (os) => os !== obraEliminada.nombre
+      ),
+    }));
+
+    localStorage.setItem("medicos_clinica", JSON.stringify(medicos));
+
     renderizarTabla();
     limpiarFormulario();
+
+    alert(
+      "Obra social eliminada y removida de los médicos correspondientes"
+    );
   }
+
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();

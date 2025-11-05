@@ -26,14 +26,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     col.innerHTML = `
       <div class="card doctor-card h-100">
-        <img src="${medico.foto || 'img/default_doctor.png'}" class="doctor-card-img img-fluid rounded-top" alt="${medico.nombre} ${medico.apellido}">
+        <img src="${
+          medico.foto || "img/default_doctor.png"
+        }" class="doctor-card-img img-fluid rounded-top" alt="${
+      medico.nombre
+    } ${medico.apellido}">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">${medico.nombre} ${medico.apellido}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Mat: ${medico.matricula || "-"}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Mat: ${
+            medico.matricula || "-"
+          }</h6>
           <ul class="mb-2">
             <li><strong>Especialidad:</strong> ${medico.especialidad}</li>
-            <li><strong>Obras sociales:</strong> ${medico.obraSociales.join(", ")}</li>
-            <li><strong>Valor consulta:</strong> $${medico.valorConsulta.toFixed(2)}</li>
+            <li><strong>Obras sociales:</strong> ${
+              medico.obraSociales && medico.obraSociales.length > 0
+                ? medico.obraSociales.join(", ")
+                : "Solo particular"
+            }</li>
+            <li><strong>Valor consulta:</strong> $${medico.valorConsulta.toFixed(
+              2
+            )}</li>
           </ul>
           <p class="card-text flex-grow-1">${medico.descripcion || ""}</p>
           ${botonReserva}

@@ -190,7 +190,6 @@ const datosInicialesObrasSociales = [
   { id: 4, nombre: "OSER", descuento: 20 },
   { id: 5, nombre: "PAMI", descuento: 100 },
   { id: 6, nombre: "Particular", descuento: 0 },
-  { id: 7, nombre: "Otra", descuento: 0 }
 ];
 
 const datosInicialesTurnos = [

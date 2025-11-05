@@ -68,17 +68,33 @@ document.addEventListener("DOMContentLoaded", () => {
         actualizarCalculoPrecio(0);
     }
 
-    function cargarObrasSocialesSelect() {
-        selectObraSocial.innerHTML = '';
-        obrasSociales.forEach(os => {
-            selectObraSocial.innerHTML += `
-                <option value="${os.id}" data-descuento="${os.descuento}">
-                    ${os.nombre} (${os.descuento}%)
-                </option>`;
-        });
-        const particular = obrasSociales.find(os => os.nombre === "Particular") || { id: 0 };
-        selectObraSocial.value = particular.id;
-    }
+   function cargarObrasSocialesSelect() {
+     selectObraSocial.innerHTML = "";
+
+     const obrasDelMedico = obrasSociales.filter((os) =>
+       medico.obraSociales.includes(os.nombre)
+     );
+
+     const particular = obrasSociales.find((os) => os.nombre === "Particular");
+     if (
+       particular &&
+       !obrasDelMedico.some((os) => os.nombre === "Particular")
+     ) {
+       obrasDelMedico.push(particular);
+     }
+
+     obrasDelMedico.forEach((os) => {
+       selectObraSocial.innerHTML += `
+            <option value="${os.id}" data-descuento="${os.descuento}">
+                ${os.nombre} ${os.descuento ? `(${os.descuento}%)` : ""}
+            </option>`;
+     });
+
+     if (particular) {
+       selectObraSocial.value = particular.id;
+     }
+   }
+
 
     function cargarTurnosDisponibles() {
         const turnosDisponibles = turnos.filter(t => t.id_medico === medicoId && t.disponible === true);
