@@ -293,7 +293,7 @@ body.admin-page {
 }
 
 .admin-card {
-    border-left: 4px solid #003366;
+    border: 4px solid #003366;
     box-shadow: 0 2px 8px rgba(0, 51, 102, 0.1);
 }
 
