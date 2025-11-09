@@ -16,8 +16,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function cargarMedicos() {
-    const datosGuardados = localStorage.getItem(KEY_MEDICOS);
-    return datosGuardados ? JSON.parse(datosGuardados) : [];
+    let medicos = null;
+    try {
+      medicos = JSON.parse(localStorage.getItem(KEY_MEDICOS));
+    } catch (e) {
+      medicos = null;
+    }
+
+    if (!Array.isArray(medicos) || medicos.length === 0) {
+      if (
+        typeof datosInicialesMedicos !== "undefined" &&
+        Array.isArray(datosInicialesMedicos)
+      ) {
+        medicos = datosInicialesMedicos.slice();
+        localStorage.setItem(KEY_MEDICOS, JSON.stringify(medicos));
+      } else {
+        medicos = [];
+      }
+    }
+    return medicos;
   }
 
   function guardarMedicos(medicos) {
