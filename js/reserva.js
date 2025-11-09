@@ -71,11 +71,17 @@ document.addEventListener("DOMContentLoaded", () => {
    function cargarObrasSocialesSelect() {
      selectObraSocial.innerHTML = "";
 
-     const obrasDelMedico = obrasSociales.filter((os) =>
-       medico.obraSociales.includes(os.nombre)
+     const obras = Array.isArray(obrasSociales) ? obrasSociales : [];
+
+     const medicoObras = Array.isArray(medico.obraSociales)
+       ? medico.obraSociales
+       : [];
+
+     const obrasDelMedico = obras.filter((os) =>
+       medicoObras.includes(os.nombre)
      );
 
-     const particular = obrasSociales.find((os) => os.nombre === "Particular");
+     const particular = obras.find((os) => os.nombre === "Particular");
      if (
        particular &&
        !obrasDelMedico.some((os) => os.nombre === "Particular")
@@ -85,9 +91,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
      obrasDelMedico.forEach((os) => {
        selectObraSocial.innerHTML += `
-            <option value="${os.id}" data-descuento="${os.descuento}">
-                ${os.nombre} ${os.descuento ? `(${os.descuento}%)` : ""}
-            </option>`;
+         <option value="${os.id}" data-descuento="${os.descuento}">
+             ${os.nombre} ${os.descuento ? `(${os.descuento}%)` : ""}
+         </option>`;
      });
 
      if (particular) {

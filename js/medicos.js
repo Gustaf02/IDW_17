@@ -133,10 +133,10 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("telefono").value = medico.telefono;
       document.getElementById("descripcion").value = medico.descripcion;
 
-      document.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
-        cb.checked = medico.obraSociales.includes(
-          cb.nextElementSibling.textContent
-        );
+      document.querySelectorAll(".obra-checkbox").forEach((cb) => {
+        cb.checked =
+          Array.isArray(medico.obraSociales) &&
+          medico.obraSociales.includes(cb.value);
       });
 
       form.querySelector('button[type="submit"]').innerHTML =
@@ -172,9 +172,9 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    const obrasSociales = Array.from(
-      document.querySelectorAll('input[type="checkbox"]:checked')
-    ).map((cb) => cb.nextElementSibling.textContent);
+   const obrasSociales = Array.from(
+     document.querySelectorAll(".obra-checkbox:checked")
+   ).map((cb) => cb.value);
 
     let medicos = cargarMedicos();
 

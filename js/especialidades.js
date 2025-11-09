@@ -3,6 +3,8 @@ const KEY_ESPECIALIDADES = "especialidades_clinica";
 const form = document.getElementById("formEspecialidad");
 const tbody = document.getElementById("tablaEspecialidades");
 const btnCancelar = document.getElementById("btnCancelar");
+const inputImg = document.getElementById("img");
+const PLACEHOLDER_IMG = "img/especialidad_placeholder.jpg";
 
 function obtenerDatosIniciales() {
 
@@ -11,6 +13,16 @@ function obtenerDatosIniciales() {
   }
   return [];
 }
+
+function convertirImagenABase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+    reader.readAsDataURL(file);
+  });
+}
+
 
 function cargarEspecialidades() {
   const datosGuardados = localStorage.getItem(KEY_ESPECIALIDADES);
@@ -42,7 +54,7 @@ function renderizarTabla() {
   if (especialidades.length === 0) {
     tbody.innerHTML = `
         <tr>
-          <td colspan="3" class="text-center text-muted">
+          <td colspan="4" class="text-center text-muted">
             No hay especialidades registradas
           </td>
         </tr>`;
@@ -51,9 +63,14 @@ function renderizarTabla() {
 
   especialidades.forEach((especialidad) => {
     const fila = document.createElement("tr");
+
+    const imgSrc = especialidad.img || PLACEHOLDER_IMG;
+
     fila.innerHTML = `
         <td>${especialidad.id}</td>
+        <td><img src="${imgSrc}" alt="${especialidad.nombre}" class="admin-table-img"></td>
         <td>${especialidad.nombre}</td>
+        <td>${especialidad.descripcion}</td>
         <td>
           <button class="btn btn-warning btn-sm editar" data-id="${especialidad.id}">
             <i class="fas fa-edit me-1"></i>Editar
@@ -74,6 +91,7 @@ function cargarEspecialidadParaEditar(id) {
   if (especialidad) {
     document.getElementById("especialidadId").value = especialidad.id;
     document.getElementById("nombre").value = especialidad.nombre;
+    document.getElementById("descripcion").value =especialidad.descripcion || "";
 
     form.querySelector('button[type="submit"]').innerHTML =
       '<i class="fas fa-edit me-1"></i>Actualizar Especialidad';
@@ -91,37 +109,59 @@ function eliminarEspecialidad(id) {
   }
 }
 
-form.addEventListener("submit", function (evento) {
+form.addEventListener("submit", async function (evento) {
   evento.preventDefault();
 
   const id = document.getElementById("especialidadId").value;
   const nombre = document.getElementById("nombre").value.trim();
+  const descripcion = document.getElementById("descripcion").value.trim();
 
-  if (nombre === "") {
-    alert("El nombre de la especialidad es obligatorio.");
+  if (!nombre || !descripcion) {
+    alert("Todos los campos son obligatorios.");
     return;
   }
 
   let especialidades = cargarEspecialidades();
 
-  const nuevoId = Math.max(0, ...especialidades.map((e) => e.id || 0)) + 1;
+  const file = inputImg.files[0];
+  let imgBase64 = "";
 
-  const especialidad = {
-    id: id ? parseInt(id) : nuevoId,
+  if (file) {
+    try {
+      imgBase64 = await convertirImagenABase64(file);
+    } catch {
+      alert("Error al procesar la imagen.");
+    }
+  }
+
+  const nuevoId = id
+    ? parseInt(id)
+    : Math.max(0, ...especialidades.map((e) => e.id || 0)) + 1;
+
+  const especialidadObj = {
+    id: nuevoId,
     nombre: nombre,
+    descripcion: descripcion,
+    img: imgBase64 || PLACEHOLDER_IMG,
   };
 
   if (id) {
     const idx = especialidades.findIndex((e) => e.id == id);
-    especialidades[idx] = especialidad;
+
+    especialidadObj.img =
+      imgBase64 || especialidades[idx].img || PLACEHOLDER_IMG;
+
+    especialidades[idx] = especialidadObj;
     alert("Especialidad actualizada con éxito!");
   } else {
-    const nombreExiste = especialidades.some(e => e.nombre.toLowerCase() === nombre.toLowerCase());
+    const nombreExiste = especialidades.some(
+      (e) => e.nombre.toLowerCase() === nombre.toLowerCase()
+    );
     if (nombreExiste) {
       alert("Ya existe una especialidad con ese nombre.");
       return;
     }
-    especialidades.push(especialidad);
+    especialidades.push(especialidadObj);
     alert("Especialidad guardada con éxito!");
   }
 
@@ -129,6 +169,7 @@ form.addEventListener("submit", function (evento) {
   renderizarTabla();
   limpiarFormulario();
 });
+
 
 tbody.addEventListener("click", function (evento) {
   const target = evento.target.closest("button");
