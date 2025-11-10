@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (obras.length === 0) {
       tbody.innerHTML = `
                 <tr>
-                    <td colspan="4" class="text-center text-muted">No hay obras sociales cargadas</td>
+                    <td colspan="5" class="text-center text-muted">No hay obras sociales cargadas</td>
                 </tr>`;
       return;
     }
@@ -45,11 +45,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td class="text-center">${os.id}</td>
                 <td class="text-center">${os.nombre}</td>
                 <td class="text-center">${os.descuento}%</td>
+                <td class="text-center">${os.descripcion || "—"}</td>
                 <td class="text-center">
-                    <button class="btn btn-warning btn-sm editar" data-id="${os.id}">
+                    <button class="btn btn-warning btn-sm editar" data-id="${
+                      os.id
+                    }">
                         <i class="fas fa-edit"></i> Editar
                     </button>
-                    <button class="btn btn-danger btn-sm borrar" data-id="${os.id}">
+                    <button class="btn btn-danger btn-sm borrar" data-id="${
+                      os.id
+                    }">
                         <i class="fas fa-trash"></i> Eliminar
                     </button>
                 </td>
@@ -66,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
       inputId.value = os.id;
       document.getElementById("nombreObra").value = os.nombre;
       document.getElementById("porcentaje").value = os.descuento;
+      document.getElementById("descripcionObra").value = os.descripcion || "";
       form.querySelector('button[type="submit"]').innerHTML =
         '<i class="fas fa-edit me-1"></i>Actualizar Obra Social';
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -109,6 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const id = inputId.value;
     const nombre = document.getElementById("nombreObra").value.trim();
     const descuento = parseInt(document.getElementById("porcentaje").value);
+    const descripcion = document.getElementById("descripcionObra").value.trim();
 
     if (!nombre || isNaN(descuento)) {
       alert("Completa correctamente los datos.");
@@ -121,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: id ? parseInt(id) : Math.max(0, ...obras.map((o) => o.id)) + 1,
       nombre,
       descuento,
+      descripcion,
     };
 
     if (id) {

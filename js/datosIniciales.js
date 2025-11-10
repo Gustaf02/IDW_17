@@ -269,12 +269,12 @@ const datosInicialesEspecialidades = [
 
 
 const datosInicialesObrasSociales = [
-  { id: 1, nombre: "OSDE", descuento: 40 },
-  { id: 2, nombre: "Swiss Medical", descuento: 75 },
-  { id: 3, nombre: "Galeno", descuento: 50 },
-  { id: 4, nombre: "OSER", descuento: 20 },
-  { id: 5, nombre: "PAMI", descuento: 100 },
-  { id: 6, nombre: "Particular", descuento: 0 },
+  { id: 1, nombre: "OSDE", descuento: 40, descripcion: "Cobertura médica integral con amplia cartilla de prestadores." },
+  { id: 2, nombre: "Swiss Medical", descuento: 75, descripcion: "Planes de salud premium con atención en todo el país." },
+  { id: 3, nombre: "Galeno", descuento: 50, descripcion: "Servicios médicos y hospitalarios con enfoque en atención familiar." },
+  { id: 4, nombre: "OSER", descuento: 20, descripcion: "Obra social regional con cobertura básica en especialidades médicas."},
+  { id: 5, nombre: "PAMI", descuento: 100, descripcion: "Cobertura total para jubilados y pensionados afiliados al sistema." },
+  { id: 6, nombre: "Particular", descuento: 0, descripcion: "Atención sin cobertura de obra social, con pago particular." },
 ];
 
 const datosInicialesTurnos = [
