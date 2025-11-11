@@ -167,18 +167,147 @@ const datosInicialesMedicos = [
 ];
 
 const datosInicialesEspecialidades = [
-    { id: 1, nombre: "Cardiología" },
-    { id: 2, nombre: "Dermatología" },
-    { id: 3, nombre: "Pediatría" },
-    { id: 4, nombre: "Traumatología" },
-    { id: 5, nombre: "Ginecología" },
-    { id: 6, nombre: "Neurología" },
-    { id: 7, nombre: "Reumatología" },
-    { id: 8, nombre: "Endocrinología" },
-    { id: 9, nombre: "Nutrición" },
-    { id: 10, nombre: "Oftalmología" },
-    { id: 11, nombre: "Cirugía general" },
-    { id: 12, nombre: "Endodoncia" },
-    { id: 13, nombre: "Urología" },
-    { id: 14, nombre: "Fonoaudiología" }
+  {
+    id: 1,
+    nombre: "Cardiología",
+    img: "img/Cardiologia.jpg",
+    descripcion:
+      "Especialidad que se encarga del diagnóstico y tratamiento de enfermedades del corazón y sistema circulatorio.",
+  },
+  {
+    id: 2,
+    nombre: "Dermatología",
+    img: "img/Dermatologia.jpg",
+    descripcion:
+      "Tratamiento de enfermedades de la piel, cabello y uñas, y realización de controles preventivos.",
+  },
+  {
+    id: 3,
+    nombre: "Pediatría",
+    img: "img/Pediatria.jpg",
+    descripcion:
+      "Atención integral de niños y adolescentes, priorizando la prevención y el crecimiento saludable.",
+  },
+  {
+    id: 4,
+    nombre: "Traumatología",
+    img: "img/Traumatologia.jpg",
+    descripcion:
+      "Diagnóstico y tratamiento de lesiones musculoesqueléticas y traumatismos.",
+  },
+  {
+    id: 5,
+    nombre: "Ginecología",
+    img: "img/Ginecologia.jpg",
+    descripcion:
+      "Atención ginecológica integral con enfoque en salud preventiva y bienestar femenino.",
+  },
+  {
+    id: 6,
+    nombre: "Neurología",
+    img: "img/Neurologia.jpg",
+    descripcion:
+      "Especialidad dedicada a patologías del sistema nervioso y evaluación de funciones neurológicas.",
+  },
+  {
+    id: 7,
+    nombre: "Reumatología",
+    img: "img/Reumatologia.jpg",
+    descripcion:
+      "Tratamiento de enfermedades reumáticas y articulares, buscando mejorar la movilidad y calidad de vida.",
+  },
+  {
+    id: 8,
+    nombre: "Endocrinología",
+    img: "img/Endocrinologia.jpg",
+    descripcion:
+      "Diagnóstico y tratamiento de trastornos hormonales y metabólicos.",
+  },
+  {
+    id: 9,
+    nombre: "Nutrición",
+    img: "img/Nutricion.jpg",
+    descripcion:
+      "Planes nutricionales personalizados y seguimiento de la alimentación saludable.",
+  },
+  {
+    id: 10,
+    nombre: "Oftalmología",
+    img: "img/Oftalmologia.jpg",
+    descripcion:
+      "Diagnóstico y tratamiento de enfermedades y problemas de visión.",
+  },
+  {
+    id: 11,
+    nombre: "Cirugía general",
+    img: "img/CirugiaGeneral.jpg",
+    descripcion:
+      "Realización de cirugías y procedimientos quirúrgicos con enfoque en seguridad y recuperación rápida.",
+  },
+  {
+    id: 12,
+    nombre: "Endodoncia",
+    img: "img/Endodoncia.jpg",
+    descripcion:
+      "Tratamientos de conducto y cuidado integral de la salud dental.",
+  },
+  {
+    id: 13,
+    nombre: "Urología",
+    img: "img/Urologia.jpg",
+    descripcion:
+      "Diagnóstico y tratamiento de enfermedades del aparato urinario y sistema reproductor masculino.",
+  },
+  {
+    id: 14,
+    nombre: "Fonoaudiología",
+    img: "img/Fonoaudiologia.jpeg",
+    descripcion:
+      "Evaluación y rehabilitación de problemas de habla, comunicación y audición.",
+  },
+];
+
+
+const datosInicialesObrasSociales = [
+  { id: 1, nombre: "OSDE", descuento: 40, descripcion: "Cobertura médica integral con amplia cartilla de prestadores." },
+  { id: 2, nombre: "Swiss Medical", descuento: 75, descripcion: "Planes de salud premium con atención en todo el país." },
+  { id: 3, nombre: "Galeno", descuento: 50, descripcion: "Servicios médicos y hospitalarios con enfoque en atención familiar." },
+  { id: 4, nombre: "OSER", descuento: 20, descripcion: "Obra social regional con cobertura básica en especialidades médicas."},
+  { id: 5, nombre: "PAMI", descuento: 100, descripcion: "Cobertura total para jubilados y pensionados afiliados al sistema." },
+  { id: 6, nombre: "Particular", descuento: 0, descripcion: "Atención sin cobertura de obra social, con pago particular." },
+];
+
+const datosInicialesTurnos = [
+  // Turnos para Dr. Mario Gómez (ID 1)
+  { id: 5, id_medico: 1, fechaHora: "2025-11-11T09:00", disponible: true },
+  { id: 6, id_medico: 1, fechaHora: "2025-11-11T10:00", disponible: false }, // Ocupado
+  // Turnos para Dr. Juan Pérez (ID 2)
+  { id: 1, id_medico: 2, fechaHora: "2025-11-10T10:00", disponible: true },
+  { id: 2, id_medico: 2, fechaHora: "2025-11-10T11:00", disponible: true },
+  { id: 3, id_medico: 2, fechaHora: "2025-11-12T15:00", disponible: false }, // Ocupado
+  { id: 4, id_medico: 2, fechaHora: "2025-11-12T16:00", disponible: true },
+];
+
+const datosInicialesReservas = [
+  {
+    id: 1,
+    id_turno: 3,
+    id_medico: 2,
+    especialidad: "Cardiología",
+    valor_total: 18000.00,
+    nombre_paciente: "Emily Johnson (Dummy)",
+    documento: "D-987654",
+    obra_social: "Particular"
+  },
+
+  {
+    id: 2,
+    id_turno: 6,
+    id_medico: 1,
+    especialidad: "Dermatología",
+    valor_total: 12800.00,
+    nombre_paciente: "Michael Williams (Dummy)",
+    documento: "D-123456",
+    obra_social: "Galeno"
+  }
 ];

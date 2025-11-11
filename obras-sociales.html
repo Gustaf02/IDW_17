@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administración de Especialidades - Clínica Salud Integral S.A</title>
+    <title>Administración de Obras Sociales - Clínica Salud Integral S.A</title>
     <script src="js/guardian.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/estilos.css" />
@@ -29,9 +29,9 @@
                     <input type="hidden" id="obraSocialId" value="" />
 
                     <div class="row g-3">
-                        <div class="col-md-12 mb-3>
+                        <div class="col-md-12 mb-3">
                             <label class="form-label">Nombre de la Obra Social *</label>
-                            <input type="text" class="form-control" id="nombre" required />
+                            <input type="text" class="form-control" id="nombreObra" required />
                         </div>
                         <div class="col-md-12 mb-3">
                             <label class="form-label">Porcentaje de descuento</label>
@@ -40,11 +40,16 @@
                                 <span class="input-group-text">%</span>
                             </div>
                         </div>
+                        <div class="col-md-12 mb-3">
+                          <label class="form-label">Descripción</label>
+                          <textarea class="form-control" id="descripcionObra" rows="2"
+                            placeholder="Breve descripción o notas opcionales"></textarea>
+                        </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-success me-2">
-                                <i class="fas fa-save me-1"></i>Guardar Especialidad
+                                <i class="fas fa-save me-1"></i>Guardar Obra Social
                             </button>
-                            <button type="button" class="btn btn-secondary" id="btnCancelar">
+                            <button type="button" class="btn btn-secondary" id="btnCancelarObra">
                                 <i class="fas fa-times me-1"></i>Cancelar
                             </button>
                         </div>
@@ -54,7 +59,6 @@
 
         </section>
 
-        <!-- Tabla de Obras Sociales -->
         <section class="card shadow admin-card">
             <div class="card-header bg-info text-white">
                 <h5 class="mb-0">
@@ -69,76 +73,11 @@
                                 <th class="text-center">ID</th>
                                 <th class="text-center">Nombre</th>
                                 <th class="text-center">Porcentaje de descuento</th>
+                                <th class="text-center">Descripción</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody id="tablaEspecialidades">
-                            <tr>
-                                <td>1</td>
-                                <td>OSDE</td>
-                                <td>30%</td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning me-1">
-                                        <i class="fas fa-edit me-1"></i>Editar
-                                    </button>
-                                    <button class="btn btn-sm btn-danger">
-                                        <i class="fas fa-trash me-1"></i>Eliminar
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Galeno</td>
-                                <td>80%</td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning me-1">
-                                        <i class="fas fa-edit me-1"></i>Editar
-                                    </button>
-                                    <button class="btn btn-sm btn-danger">
-                                        <i class="fas fa-trash me-1"></i>Eliminar
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Swiss Medical</td>
-                                <td>70%</td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning me-1">
-                                        <i class="fas fa-edit me-1"></i>Editar
-                                    </button>
-                                    <button class="btn btn-sm btn-danger">
-                                        <i class="fas fa-trash me-1"></i>Eliminar
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>PAMI</td>
-                                <td>100%</td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning me-1">
-                                        <i class="fas fa-edit me-1"></i>Editar
-                                    </button>
-                                    <button class="btn btn-sm btn-danger">
-                                        <i class="fas fa-trash me-1"></i>Eliminar
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>OSER</td>
-                                <td>30%</td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning me-1">
-                                        <i class="fas fa-edit me-1"></i>Editar
-                                    </button>
-                                    <button class="btn btn-sm btn-danger">
-                                        <i class="fas fa-trash me-1"></i>Eliminar
-                                    </button>
-                                </td>
-                            </tr>
-
+                        <tbody id="tablaObrasSociales">
                         </tbody>
                     </table>
                 </div>
@@ -149,7 +88,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/datosIniciales.js"></script>
-    <script src="js/especialidades.js"></script>
+    <script src="js/obrasSociales.js"></script>
 </body>
 
 </html>

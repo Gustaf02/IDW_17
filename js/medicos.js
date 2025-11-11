@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
   const KEY_MEDICOS = "medicos_clinica";
   const PLACEHOLDER_FOTO = "img/user_placeholder.jpg";
   const form = document.getElementById("formMedico");
@@ -17,8 +16,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function cargarMedicos() {
-    const datosGuardados = localStorage.getItem(KEY_MEDICOS);
-    return datosGuardados ? JSON.parse(datosGuardados) : [];
+    let medicos = null;
+    try {
+      medicos = JSON.parse(localStorage.getItem(KEY_MEDICOS));
+    } catch (e) {
+      medicos = null;
+    }
+
+    if (!Array.isArray(medicos) || medicos.length === 0) {
+      if (
+        typeof datosInicialesMedicos !== "undefined" &&
+        Array.isArray(datosInicialesMedicos)
+      ) {
+        medicos = datosInicialesMedicos.slice();
+        localStorage.setItem(KEY_MEDICOS, JSON.stringify(medicos));
+      } else {
+        medicos = [];
+      }
+    }
+    return medicos;
   }
 
   function guardarMedicos(medicos) {
@@ -30,6 +46,53 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("medicoId").value = "";
     form.querySelector('button[type="submit"]').innerHTML =
       '<i class="fas fa-save me-1"></i>Guardar Médico';
+  }
+
+  const KEY_OBRAS = "obras_sociales_clinica";
+
+  function cargarObrasDisponibles() {
+    let obras = null;
+    try {
+      obras = JSON.parse(localStorage.getItem(KEY_OBRAS));
+    } catch (e) {
+      obras = null;
+    }
+    if (!Array.isArray(obras)) {
+      if (
+        typeof datosInicialesObrasSociales !== "undefined" &&
+        Array.isArray(datosInicialesObrasSociales)
+      ) {
+        obras = datosInicialesObrasSociales.slice();
+        localStorage.setItem(KEY_OBRAS, JSON.stringify(obras));
+      } else {
+        obras = [];
+      }
+    }
+    return obras;
+  }
+
+  function renderizarObrasSociales() {
+    const contenedor = document.getElementById("contenedorObrasSociales");
+    if (!contenedor) return;
+    contenedor.innerHTML = "";
+
+    const obras = cargarObrasDisponibles();
+    obras.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+    obras.forEach((obra) => {
+      const col = document.createElement("div");
+      col.className = "col-md-3 mb-2";
+      col.innerHTML = `
+      <div class="form-check">
+        <input class="form-check-input obra-checkbox" type="checkbox" 
+               id="obra_${obra.id}" value="${obra.nombre}">
+        <label class="form-check-label" for="obra_${obra.id}">
+          ${obra.nombre}
+        </label>
+      </div>
+    `;
+      contenedor.appendChild(col);
+    });
   }
 
   function renderizarTabla() {
@@ -51,7 +114,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const fila = document.createElement("tr");
       fila.innerHTML = `
         <td>${medico.id}</td>
-        <td><img src="${fotoSrc}" class="admin-table-img" alt="${medico.nombre}"></td>
+        <td><img src="${fotoSrc}" class="admin-table-img" alt="${
+        medico.nombre
+      }"></td>
         <td>${medico.nombre}</td>
         <td>${medico.apellido}</td>
         <td>${medico.especialidad}</td>
@@ -85,8 +150,10 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("telefono").value = medico.telefono;
       document.getElementById("descripcion").value = medico.descripcion;
 
-      document.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
-        cb.checked = medico.obraSociales.includes(cb.nextElementSibling.textContent);
+      document.querySelectorAll(".obra-checkbox").forEach((cb) => {
+        cb.checked =
+          Array.isArray(medico.obraSociales) &&
+          medico.obraSociales.includes(cb.value);
       });
 
       form.querySelector('button[type="submit"]').innerHTML =
@@ -122,9 +189,9 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    const obrasSociales = Array.from(
-      document.querySelectorAll('input[type="checkbox"]:checked')
-    ).map((cb) => cb.nextElementSibling.textContent);
+   const obrasSociales = Array.from(
+     document.querySelectorAll(".obra-checkbox:checked")
+   ).map((cb) => cb.value);
 
     let medicos = cargarMedicos();
 
@@ -182,4 +249,5 @@ document.addEventListener("DOMContentLoaded", function () {
   btnCancelar.addEventListener("click", limpiarFormulario);
 
   renderizarTabla();
+  renderizarObrasSociales();
 });
