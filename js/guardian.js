@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (!token || !usuarioAutorizado) {
-        console.warn("GUARD (auth-guard.js): Acceso denegado. Redirigiendo a login.html");
+        console.warn("GUARD (guardian.js): Acceso denegado. Redirigiendo a login.html");
         
         sessionStorage.removeItem('accessToken');
         sessionStorage.removeItem('userData');

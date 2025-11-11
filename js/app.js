@@ -62,7 +62,7 @@ const manejarNavegacionAdministracion = () => {
                     <li><a class="dropdown-item text-danger" href="#" id="btnLogout"><i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión</a></li>
                 </ul>
             </div>
-            <a class="btn btn-warning fw-semibold d-flex align-items-center" href="../catalogo.html">Pedir Turno</a>
+            <a class="btn btn-warning fw-semibold d-flex align-items-center" href="catalogo.html">Pedir Turno</a>
         `;
 
         const btnLogout = document.getElementById("btnLogout");
@@ -85,7 +85,7 @@ const manejarNavegacionAdministracion = () => {
             <a class="btn btn-outline-light fw-semibold d-flex align-items-center" href="login.html">
                 <i class="fas fa-sign-in-alt me-1"></i> Iniciar Sesión
             </a>
-            <a class="btn btn-warning fw-semibold d-flex align-items-center" href="../catalogo.html">Pedir Turno</a>
+            <a class="btn btn-warning fw-semibold d-flex align-items-center" href="catalogo.html">Pedir Turno</a>
         `;
     }
 }
