@@ -84,7 +84,10 @@ El sitio cuenta actualmente con las siguientes páginas:
 ### 11. Reserva.html (Página de reserva de turnos)
 - Contiene un formulario para la reserva de los turnos
 
-### 12. Estilos.css (Hoja de Estilos)
+### 12. Especialidades.html (Página informativa)
+- Contiene un listado de las especialidades medicas ofrecidas en la clínica
+
+### 13. Estilos.css (Hoja de Estilos)
 - Centraliza estilos del sitio web
 - Mantiene la coherencia visual en todas las páginas
 - Facilita el mantenimiento y actualizaciones de diseño
