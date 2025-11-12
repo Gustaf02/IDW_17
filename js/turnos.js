@@ -138,11 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const turno = turnos.find(t => t.id === id);
 
         if (turno) {
-
-            if (!turno.disponible) {
-                alert("No se puede editar un turno que ya ha sido reservado.");
-                return;
-            }
             inputTurnoId.value = turno.id;
             selectMedico.value = turno.id_medico;
             inputFechaHora.value = turno.fechaHora;
@@ -155,11 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function eliminarTurno(id) {
         const turnos = JSON.parse(localStorage.getItem(KEY_TURNOS)) || [];
         const turno = turnos.find(t => t.id === id);
-
-        if (turno && !turno.disponible) {
-            alert("No se puede eliminar un turno que ya ha sido reservado.");
-            return;
-        }
 
         if (confirm("¿Está seguro de que desea eliminar este turno?")) {
             const turnosActualizados = turnos.filter(t => t.id !== id);
